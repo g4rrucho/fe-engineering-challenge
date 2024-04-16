@@ -49,4 +49,4 @@ Sometimes it's good to know the theoretical principles behind certain practices,
 
 **Attention to detail**
 
-Achieving pixel perfection often comes at the cost of runtime performance and implementation cost. Adding more features can enhance the functionality of an application, but it also introduces complexity that may overwhelm users, especially those new to the platform. Striving for simplicity in design doesn't mean sacrificing functionality. It means prioritizing the most essential features to ensure a smooth, accessible and enjoyable user experience across various devices and network conditions
+Achieving pixel perfection often comes at the cost of runtime performance and implementation. Adding more features can enhance the functionality of an application, but it also introduces complexity that may overwhelm users, especially those new to the platform. Striving for simplicity in design doesn't mean sacrificing functionality. It means prioritizing the most essential features to ensure a smooth, accessible and enjoyable user experience across various devices and network conditions

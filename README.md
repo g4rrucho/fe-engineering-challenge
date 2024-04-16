@@ -1,87 +1,35 @@
 # Frontend Engineering Challenge, by Bloqit
 
-Yesterday morning, when we showed up to work at 9ish, we noticed that all our codebases suddenly **disappeared** (yes, including the "serverless" stuff) and, to make matters worse, all our staff had a strong and collective case of amnesia (which, funny enough, only extends to the work-related subjects). Our CTO, though, still has some flashes of our domain model. He vaguely remembers that we had a thing called `Bloq`, which each contained many `Lockers` (doors), which, in turn, could contain a thing called `Rent` (parcel) from time to time. After this short description, our engineering team also started to have some memory flashes and managed to put together some basic properties of each entity:
+With the advent of Pokémon GO many fans got the opportunity to live and breathe their good old memories as Pokémon Trainers. They didn't merely want to relive the past, they sought to ascend to the pinnacle of Pokémon mastery, to become revered as true Pokémon Masters. 
+Yet, as they embarked on this journey from humble beginnings, a palpable void became evident — a missing link in their quest for excellence. With no centralized platform to track their progress, many felt adrift in their pursuit of greatness. It was this unmet need that sparked a quest for innovation, a quest to develop a platform that would serve as a guiding light on their path to Pokémon mastery.
 
-```graphql
-enum RentStatus {
-  CREATED
-  WAITING_DROPOFF
-  WAITING_PICKUP
-  DELIVERED
-}
-
-enum RentSize {
-  XS
-  S
-  M
-  L
-  XL
-}
-
-type Rent {
-  id: String
-  lockerId: string
-  weight: number
-  size: RentSize
-  status: RentStatus
-}
-
-enum LockerStatus {
-  OPEN
-  CLOSED
-}
-
-type Locker {
-  id: String
-  bloqId: String
-  status: LockerStatus
-  isOccupied: bool
-}
-
-type Bloq {
-  id: String
-  title: String
-  address: String
-}
-```
-
-The engineering team also found it useful to capture the aforementioned relationships into an entity-relationship diagram, resulting in the depiction below:
-
-```mermaid
-erDiagram
-    BLOQ ||--|{ LOCKER : has_many
-    LOCKER ||--|{ RENT : may_contain
-    BLOQ {
-        string id
-        string title
-        string address
-    }
-    LOCKER {
-        string id
-        string bloqId
-        string status
-        bool isOccupied
-    }
-    RENT {
-        string id
-        string lockerId
-        number weight
-        string size
-        Date createdAt
-        Date droppedOffAt
-        Date pickedUpAt
-    }
-```
-
-When they headed off to start coding this all over again, though, they realized that **they can't code!!!**. Thankfully we have you, dear candidate, to implement our API from scratch all over again 🙌🏽
+So, how can we help them?
 
 ## The challenge
 
-Based on the description above, you're now tasked to implement an initial version of our API, containing the three aforementioned entities represented as API resources. We count on you to help us come back on facilitating first, middle, and last mile delivery as soon as possible!
+After having spoken with a couple of Trainers, we were able to gather the most anticipated use cases
 
-Ah, before we forget (again), we've also found some JSON files that seem to be from collections related to the entities mentioned above, please use that as our database (they're located at [/data](./data)).
+_As a Pokémon Trainer I want to_:
+  - See all Pokémons that can be caught with their respective names and pictures
+    - Which one of these were already caught by me
+  - See all Pokémons that I've caught and thus added to my Pokédex
+  - See the most important details of each Pokémon (caught and uncaught): 
+    - Height, Weight, Health (HP), Speed, Attack, Defense, Special Attack, Special Defense and its types
+    - When the Pokémon was first added to the Pokédex
+  - Share any Pokémon with my fellow trainer colleagues, especially the ones already caught
+  - Have access to my Pokédex with limited internet connectivy or none at all
+  - Have a quick overview of my progress within the Pokédex
+  - Manage my Pokédex according to my taste and needs:
+    - Filter and Sort Pokémons by Name, Height Types and Timestamp
+    - Remove one or multiple Pokémons at once
+    - Attach a free-text Note to each Pokémon
+  - Alternate between different view modes
+    - An analytical view (e.g table) is mandatory but surely it's not the best option when the only nearby device at my disposal is my phone
+  - Export all Pokémons from the Pokédex to CSV
 
-## What we will be analyzing
+Fortunately, a popular and free Pokémon API comes to rescue us with this endeavor: [PokéAPI](https://pokeapi.co/docs/v2)
+
+## What will be analyzed
 
 **Code cohesion, quality, clearness, and correctness**
 
@@ -98,3 +46,7 @@ In such a dynamic and fast-paced environment like ours, we always keep an eye ou
 **Engineering principles and practices**
 
 Sometimes it's good to know the theoretical principles behind certain practices, feel free to bring some of the patterns you may judge necessary when implementing the solution
+
+**Attention to detail**
+
+Achieving pixel perfection often comes at the cost of runtime performance and implementation cost. Adding more features can enhance the functionality of an application, but it also introduces complexity that may overwhelm users, especially those new to the platform. Striving for simplicity in design doesn't mean sacrificing functionality. It means prioritizing the most essential features to ensure a smooth, accessible and enjoyable user experience across various devices and network conditions

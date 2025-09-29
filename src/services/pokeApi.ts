@@ -2,7 +2,6 @@ import type { TPokemon } from '@/types/api';
 
 const BASE_URL = 'https://pokeapi.co/api/v2';
 
-// Pokemon API Error
 class PokemonAPIError extends Error {
   constructor(
     message: string,

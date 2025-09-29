@@ -22,3 +22,10 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Yarn
+ # Yarn
+.yarn/install-state.gz
+.yarn/build-state.yml
+.yarn/cache
+.pnp.*

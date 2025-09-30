@@ -3,7 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 
 import usePokemons from '@/hooks/usePokemons';
 import PokemonListItem from '@/components/PokemonList/PokemonListItem';
-import PokemonCardSkeleton from '@/components/PokemonCard/PokemonCardSkeleton';
+import PokemonListSkeleton from '@/components/PokemonList/PokemonListSkeleton';
 import PokemonListPaginationControls from '@/components/PokemonList/PokemonListPaginationControls';
 
 const PokemonList: React.FC = () => {
@@ -25,7 +25,7 @@ const PokemonList: React.FC = () => {
       <>
         <div className="grid grid-cols-2 gap-4 p-4 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6">
           {Array.from({ length: limit }).map((_, index) => (
-            <PokemonCardSkeleton key={index} />
+            <PokemonListSkeleton key={index} />
           ))}
         </div>
       </>

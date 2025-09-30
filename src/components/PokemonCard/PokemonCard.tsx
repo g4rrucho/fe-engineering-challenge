@@ -1,5 +1,9 @@
-import usePokemon from '@/hooks/usePokemon';
 import { useParams } from 'react-router-dom';
+
+import usePokemon from '@/hooks/usePokemon';
+import PokemonCardHeader from '@/components/PokemonCard/PokemonCardHeader';
+import PokemonPhysicalStats from '@/components/PokemonCard/PokemonPhysicalStats';
+import PokemonBaseStats from '@/components/PokemonList/PokemonBaseStats';
 
 const PokemonCard: React.FC = () => {
   const { id } = useParams();
@@ -8,22 +12,24 @@ const PokemonCard: React.FC = () => {
 
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error loading Pokémon data.</div>;
-  if (!data) return <div>No data available.</div>;
+  if (!data) return <div>No data available</div>;
 
   const {
     id: pokemonID,
     name,
-    sprites: { front_default },
+    sprites,
+    height,
+    weight,
+    stats,
+    types,
+    base_experience,
   } = data;
 
   return (
-    <div className="flex flex-col items-center space-y-4 rounded-lg bg-white p-4 shadow-2xl">
-      {front_default && <img src={front_default} alt={name} />}
-      {name.toLowerCase() === 'pikachu' && (
-        <p className="text-xl font-bold italic">"It's Pikachu!"</p>
-      )}
-      <h2 className="text-xl font-bold">{name.toUpperCase()}</h2>
-      <p>ID: {pokemonID}</p>
+    <div className="mx-auto max-w-4xl rounded-lg bg-white p-6 shadow-lg">
+      <PokemonCardHeader pokemon={{ id: pokemonID, name, sprites, types }} />
+      <PokemonPhysicalStats pokemon={{ height, weight, base_experience }} />
+      <PokemonBaseStats stats={stats} />
     </div>
   );
 };

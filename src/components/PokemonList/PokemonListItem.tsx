@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 
 import type { TNamedAPIResource, TPokemon } from '@/types/api';
 import usePokemon from '@/hooks/usePokemon';
-import PokemonCardSkeleton from '@/components/PokemonCard/PokemonCardSkeleton';
+import PokemonListSkeleton from '@/components/PokemonList/PokemonListSkeleton';
 
 // TODO optimize this function
 const getPokemonIdFromUrl = (url: string): string | null => {
@@ -15,9 +15,9 @@ const PokemonListItem: React.FC<TNamedAPIResource> = ({ name, url }) => {
   const { data, isLoading, isError } = usePokemon(
     getPokemonIdFromUrl(url) || name
   );
-  const memoizedPokemon = React.useMemo(() => data, [data]);
+  const memoizedPokemon = useMemo(() => data, [data]);
 
-  if (isLoading) return <PokemonCardSkeleton />;
+  if (isLoading) return <PokemonListSkeleton />;
   // TODO implement error card & retry logic
   if (isError) return <div>Error loading Pokémon data.</div>;
 

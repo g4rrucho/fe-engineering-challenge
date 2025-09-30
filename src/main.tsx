@@ -7,12 +7,15 @@ import { QueryClientProvider } from '@tanstack/react-query';
 import { queryClient } from '@/lib/queryClient.ts';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { BrowserRouter } from 'react-router-dom';
+import { PokedexProvider } from '@/contexts/PokedexContext.tsx';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <BrowserRouter>
       <QueryClientProvider client={queryClient}>
-        <App />
+        <PokedexProvider>
+          <App />
+        </PokedexProvider>
         <ReactQueryDevtools />
       </QueryClientProvider>
     </BrowserRouter>

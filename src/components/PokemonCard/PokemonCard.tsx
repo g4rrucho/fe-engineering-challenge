@@ -1,11 +1,20 @@
-import { TPokemon } from '@/types/api';
+import usePokemon from '@/hooks/usePokemon';
+import { useParams } from 'react-router-dom';
 
-const PokemonCard: React.FC<TPokemon> = (pokemon) => {
+const PokemonCard: React.FC = () => {
+  const { id } = useParams();
+
+  const { data, isLoading, error } = usePokemon(id as string | number);
+
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Error loading Pokémon data.</div>;
+  if (!data) return <div>No data available.</div>;
+
   const {
+    id: pokemonID,
     name,
-    id,
     sprites: { front_default },
-  } = pokemon;
+  } = data;
 
   return (
     <div className="flex flex-col items-center space-y-4 rounded-lg bg-white p-4 shadow-2xl">
@@ -14,7 +23,7 @@ const PokemonCard: React.FC<TPokemon> = (pokemon) => {
         <p className="text-xl font-bold italic">"It's Pikachu!"</p>
       )}
       <h2 className="text-xl font-bold">{name.toUpperCase()}</h2>
-      <p>ID: {id}</p>
+      <p>ID: {pokemonID}</p>
     </div>
   );
 };

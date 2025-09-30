@@ -46,3 +46,10 @@ export type {
   TPokemonSprites,
   TPokemon,
 };
+
+export type TPokemonPaginationResponse<T> = {
+  count: number;
+  next: string;
+  previous: string | null;
+  results: Array<T>;
+};

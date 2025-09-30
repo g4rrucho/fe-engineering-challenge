@@ -1,17 +1,17 @@
-import type React from 'react';
-import './App.css';
-import { usePokemon } from '@/hooks/usePokemon';
-import PokemonCard from '@/components/ui/pokemonCard';
+import React from 'react';
+import { Route, Routes } from 'react-router-dom';
+
+import PokemonCard from '@/components/PokemonCard';
+import PokemonList from '@/components/PokemonList';
 
 const App: React.FC = () => {
-  const { data, isLoading, error } = usePokemon('pikachu');
-
   return (
     <div>
-      <h1 className="text-3xl font-bold underline">React Pokedex!</h1>
-      {isLoading && <p>Loading...</p>}
-      {error && <p>Error: {error.message}</p>}
-      {data && <PokemonCard {...data} />}
+      <Routes>
+        <Route path="/" Component={PokemonList} />
+        <Route path="/pokemon/:id" Component={PokemonCard} />
+        <Route path="*" element={<div>404 Not Found</div>} />
+      </Routes>
     </div>
   );
 };

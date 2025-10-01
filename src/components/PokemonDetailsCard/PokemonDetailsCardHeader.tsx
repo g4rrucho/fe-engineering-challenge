@@ -1,15 +1,16 @@
 import React from 'react';
 
 import PokeBall from '@/assets/pokeball.png';
+
 import { TPokemon } from '@/types/api';
-import { usePokedex } from '@/hooks/usePokedex';
+import usePokedex from '@/hooks/usePokedex';
 import { Button } from '@/components/ui/button';
 
 type TPokemonHeaderProps = {
   pokemon: TPokemon;
 };
 
-const PokemonCardHeader: React.FC<TPokemonHeaderProps> = ({ pokemon }) => {
+const PokemonDetailsCardHeader: React.FC<TPokemonHeaderProps> = ({ pokemon }) => {
   const { isCaught, catchPokemon, releasePokemon } = usePokedex();
   const { id, name, sprites, types } = pokemon;
 
@@ -34,14 +35,14 @@ const PokemonCardHeader: React.FC<TPokemonHeaderProps> = ({ pokemon }) => {
       </div>
 
       {/* Basic Info */}
-      <div className="text-center md:text-left">
-        <div className="flex items-center gap-4">
+      <div className="text-center">
+        <div className="full-w flex items-center justify-center gap-4">
           <h1 className="mb-2 text-4xl font-bold capitalize">{name}</h1>
           {isCaught(id) && (
             <img className="h-8 w-8 object-contain" src={PokeBall} />
           )}
         </div>
-        <p className="mb-4 text-xl text-gray-600">
+        <p className="mb-4 text-xl text-gray-600 md:text-left">
           #{id.toString().padStart(3, '0')}
         </p>
 
@@ -65,19 +66,9 @@ const PokemonCardHeader: React.FC<TPokemonHeaderProps> = ({ pokemon }) => {
         >
           {caught ? `Release ${name}` : `Catch ${name}`}
         </Button>
-        {/* <button
-          onClick={handleCatchToggle}
-          className={`rounded-lg px-6 py-2 font-semibold transition-colors ${
-            caught
-              ? 'bg-red-500 text-white hover:bg-red-600'
-              : 'bg-blue-500 text-white hover:bg-blue-600'
-          }`}
-        >
-          {caught ? `Release ${name}` : `Catch ${name}`}
-        </button> */}
       </div>
     </div>
   );
 };
 
-export default PokemonCardHeader;
+export default PokemonDetailsCardHeader;

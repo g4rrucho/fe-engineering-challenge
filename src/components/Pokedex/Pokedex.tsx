@@ -1,5 +1,6 @@
-import { usePokedex } from '@/hooks/usePokedex';
-import { Link } from 'react-router-dom';
+import usePokedex from '@/hooks/usePokedex';
+import PokemonListItem from '@/components/Pokemon/PokemonList/PokemonListItem';
+import PokedexHeader from '@/components/Pokedex/PokedexHeader';
 
 const Pokedex = () => {
   const { pokemonCaught, getPokemonCaughtIDs } = usePokedex();
@@ -22,53 +23,27 @@ const Pokedex = () => {
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-8">
-      <div className="mb-6">
-        <h1 className="mb-4 text-3xl font-bold text-gray-900">My Pokédex</h1>
-        <p className="text-gray-600">
-          You've caught {pokemonCaughtIDs.length} Pokémon
-        </p>
-      </div>
+      <PokedexHeader totalCaught={pokemonCaughtIDs.length} />
 
-      <ul className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+      <div className="grid grid-cols-2 gap-4 p-4 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6">
         {pokemonCaughtIDs.map((id) => {
           const pokemonData = pokemonCaught[id];
           const pokemon = pokemonData.pokemon;
+          const pokemonCaughtAt = new Date(
+            pokemonData.caughtAt
+          ).toLocaleDateString();
 
           return (
-            <Link
-              to={`/pokemon/${id}`}
+            <PokemonListItem
               key={`pokemon-${id}`}
-              className="text-center"
-            >
-              <li className="flex flex-col items-center rounded-lg bg-white p-4 shadow-md transition-shadow hover:shadow-lg">
-                {pokemon.sprites?.front_default ? (
-                  <img
-                    src={pokemon.sprites.front_default}
-                    alt={pokemon.name}
-                    className="h-16 w-16 object-contain"
-                  />
-                ) : (
-                  <div className="flex h-16 w-16 items-center justify-center rounded bg-gray-200">
-                    <span className="text-gray-500">?</span>
-                  </div>
-                )}
-                <div className="mt-2">
-                  <p className="text-lg font-bold text-black capitalize">
-                    {pokemon.name}
-                  </p>
-                  <p className="text-sm text-gray-500">
-                    ID: {id.toString().padStart(4, '0')}
-                  </p>
-                  <p className="text-xs text-gray-400">
-                    Caught:{' '}
-                    {new Date(pokemonData.caughtAt).toLocaleDateString()}
-                  </p>
-                </div>
-              </li>
-            </Link>
+              url={`/pokemon/${id}`}
+              id={id}
+              name={pokemon.name}
+              caughtAt={pokemonCaughtAt}
+            />
           );
         })}
-      </ul>
+      </div>
     </div>
   );
 };

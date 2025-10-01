@@ -1,7 +1,7 @@
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import PaginationControl from '@/components/PokemonList/PaginationControl';
+import PaginationControl from '@/components/Pokemon/PokemonList/PaginationControl';
 
 describe('PaginationControl', () => {
   const defaultProps = {

@@ -30,8 +30,8 @@ interface PokemonBaseStatsProps {
 
 const PokemonBaseStats: React.FC<PokemonBaseStatsProps> = ({ stats }) => {
   return (
-    <div className="mt-4 border-t pt-4">
-      <h2 className="mb-4 text-2xl font-bold">Base Stats</h2>
+    <div className="border-t pt-2">
+      <h2 className="pb-4 text-2xl font-bold">Base Stats</h2>
       <div className="grid gap-3">
         {statConfig.map(({ name, statName, color }) => (
           <StatBar

@@ -17,7 +17,7 @@ const StatBar: React.FC<StatBarProps> = ({
 
   return (
     <div className="flex items-center gap-4">
-      <div className="w-24 text-sm font-medium">{name}:</div>
+      <div className="w-24 text-sm font-medium">{name}</div>
       <div className="relative h-4 flex-1 rounded-full bg-gray-200">
         <div
           className={`h-full rounded-full ${color} transition-all duration-300`}

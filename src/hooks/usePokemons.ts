@@ -1,12 +1,20 @@
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, UseQueryOptions } from '@tanstack/react-query';
 
 import type { TPokemonListItem, TPokemonPaginationResponse } from '@/types/api';
 import { pokeApi } from '@/services/pokeApi';
 
-const usePokemons = (limit: number = 20, offset: number = 0) =>
-  useQuery<TPokemonPaginationResponse<TPokemonListItem>>({
+type UsePokemonsQueryResponseType =
+  TPokemonPaginationResponse<TPokemonListItem>;
+
+const usePokemons = (
+  limit: number = 20,
+  offset: number = 0,
+  options?: Partial<UseQueryOptions<UsePokemonsQueryResponseType>>
+) =>
+  useQuery<UsePokemonsQueryResponseType>({
     queryKey: ['pokemons', limit, offset],
     queryFn: () => pokeApi.getPokemons(limit, offset),
+    ...options,
   });
 
 export default usePokemons;

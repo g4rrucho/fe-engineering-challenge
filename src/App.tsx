@@ -1,8 +1,8 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 
-import PokemonCard from '@/components/PokemonCard';
-import PokemonList from '@/components/PokemonList';
+import PokemonCard from '@/components/PokemonDetailsCard';
+import PokemonList from '@/components/Pokemon/PokemonList';
 import Header from '@/components/Layout/Header';
 import Pokedex from '@/components/Pokedex';
 

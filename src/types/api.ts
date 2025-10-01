@@ -5,6 +5,7 @@ type TNamedAPIResource = {
 
 type TPokemonListItem = TNamedAPIResource & {
   id: number;
+  caughtAt?: string;
 };
 
 type TPokemonStat = {

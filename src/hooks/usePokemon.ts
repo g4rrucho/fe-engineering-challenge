@@ -1,11 +1,17 @@
-import { pokeApi } from '@/services/pokeApi';
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, UseQueryOptions } from '@tanstack/react-query';
 
-const usePokemon = (idOrName: string | number) =>
+import { TPokemon } from '@/types/api';
+import { pokeApi } from '@/services/pokeApi';
+
+const usePokemon = (
+  idOrName: string | number,
+  options?: Partial<UseQueryOptions<TPokemon>>
+) =>
   useQuery({
     queryKey: ['pokemon', idOrName],
     queryFn: () => pokeApi.getPokemon(idOrName),
     enabled: !!idOrName,
+    ...options,
   });
 
 export default usePokemon;

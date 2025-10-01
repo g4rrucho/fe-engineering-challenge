@@ -6,7 +6,7 @@ import { usePokedex } from '@/hooks/usePokedex';
 import { Button } from '@/components/ui/button';
 
 type TPokemonHeaderProps = {
-  pokemon: Pick<TPokemon, 'id' | 'name' | 'sprites' | 'types'>;
+  pokemon: TPokemon;
 };
 
 const PokemonCardHeader: React.FC<TPokemonHeaderProps> = ({ pokemon }) => {
@@ -17,18 +17,18 @@ const PokemonCardHeader: React.FC<TPokemonHeaderProps> = ({ pokemon }) => {
 
   const handleCatchToggle = () => {
     if (caught) releasePokemon(id);
-    else catchPokemon(id);
+    else catchPokemon(pokemon);
   };
 
   return (
-    <div className="mb-8 flex flex-col items-center gap-8 md:flex-row">
+    <div className="mb-8 flex flex-col items-center gap-2 sm:gap-8 md:flex-row md:gap-2">
       {/* Pokemon Image */}
       <div className="flex-shrink-0">
         {sprites?.front_default && (
           <img
             src={sprites.front_default}
             alt={name}
-            className="h-48 w-48 object-contain"
+            className="h-24 w-24 object-contain sm:h-48 sm:w-48"
           />
         )}
       </div>

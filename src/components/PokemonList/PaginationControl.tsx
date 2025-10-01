@@ -34,11 +34,11 @@ const PaginationControl: React.FC<TPaginationControl> = ({
 
   const getVisiblePages = () => {
     const pages = [];
-    const delta = 2;
+    const delta = 1;
 
     if (currentPage > delta + 1) {
       pages.push(1);
-      if (currentPage > delta + 2) pages.push('ellipsis-start');
+      // if (currentPage > delta + 2) pages.push('ellipsis-start');
     }
 
     for (
@@ -49,7 +49,7 @@ const PaginationControl: React.FC<TPaginationControl> = ({
       pages.push(i);
 
     if (currentPage < totalPages - delta) {
-      if (currentPage < totalPages - delta - 1) pages.push('ellipsis-end');
+      // if (currentPage < totalPages - delta - 1) pages.push('ellipsis-end');
       pages.push(totalPages);
     }
 

@@ -3,6 +3,10 @@ type TNamedAPIResource = {
   url: string;
 };
 
+type TPokemonListItem = TNamedAPIResource & {
+  id: number;
+};
+
 type TPokemonStat = {
   stat: TNamedAPIResource;
   effort: number;
@@ -39,17 +43,19 @@ type TPokemon = {
   species: TNamedAPIResource;
 };
 
+type TPokemonPaginationResponse<T> = {
+  count: number;
+  next: string;
+  previous: string | null;
+  results: Array<T>;
+};
+
 export type {
   TNamedAPIResource,
   TPokemonStat,
   TPokemonType,
   TPokemonSprites,
   TPokemon,
-};
-
-export type TPokemonPaginationResponse<T> = {
-  count: number;
-  next: string;
-  previous: string | null;
-  results: Array<T>;
+  TPokemonListItem,
+  TPokemonPaginationResponse,
 };

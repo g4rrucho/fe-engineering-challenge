@@ -1,6 +1,7 @@
 import type {
   TNamedAPIResource,
   TPokemon,
+  TPokemonListItem,
   TPokemonPaginationResponse,
 } from '@/types/api';
 
@@ -46,9 +47,46 @@ export const pokeApi = {
   async getPokemons(
     limit = 20,
     offset = 0
-  ): Promise<TPokemonPaginationResponse<TNamedAPIResource>> {
-    return apiRequest<TPokemonPaginationResponse<TNamedAPIResource>>(
-      `pokemon?limit=${limit}&offset=${offset}`
-    );
+  ): Promise<TPokemonPaginationResponse<TPokemonListItem>> {
+    const response = await apiRequest<
+      TPokemonPaginationResponse<TNamedAPIResource>
+    >(`pokemon?limit=${limit}&offset=${offset}`);
+
+    const results = response.results.map((pokemon, index) => {
+      const match = pokemon.url.match(/\/pokemon\/(\d+)\//);
+      const id = match ? parseInt(match[1], 10) : offset + index + 1;
+
+      return {
+        ...pokemon,
+        id,
+      };
+    });
+
+    return {
+      ...response,
+      results,
+    };
+  },
+
+  async getAllPokemons(): Promise<TPokemonListItem[]> {
+    const resTotalPokemons =
+      await apiRequest<TPokemonPaginationResponse<TNamedAPIResource>>(
+        'pokemon?limit=1'
+      );
+    const totalPokemons = resTotalPokemons.count;
+
+    const allPokemonsResponse = await apiRequest<
+      TPokemonPaginationResponse<TNamedAPIResource>
+    >(`pokemon?limit=${totalPokemons}&offset=0`);
+
+    return allPokemonsResponse.results.map((pokemon, index) => {
+      const match = pokemon.url.match(/\/pokemon\/(\d+)\//);
+      const id = match ? parseInt(match[1], 10) : index + 1;
+
+      return {
+        ...pokemon,
+        id,
+      };
+    });
   },
 };

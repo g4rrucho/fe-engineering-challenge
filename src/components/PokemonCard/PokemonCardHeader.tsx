@@ -3,6 +3,7 @@ import React from 'react';
 import PokeBall from '@/assets/pokeball.png';
 import { TPokemon } from '@/types/api';
 import { usePokedex } from '@/hooks/usePokedex';
+import { Button } from '@/components/ui/button';
 
 type TPokemonHeaderProps = {
   pokemon: Pick<TPokemon, 'id' | 'name' | 'sprites' | 'types'>;
@@ -58,7 +59,13 @@ const PokemonCardHeader: React.FC<TPokemonHeaderProps> = ({ pokemon }) => {
       </div>
 
       <div className="mt-4 flex justify-center md:ml-auto">
-        <button
+        <Button
+          variant={caught ? 'destructive' : 'default'}
+          onClick={handleCatchToggle}
+        >
+          {caught ? `Release ${name}` : `Catch ${name}`}
+        </Button>
+        {/* <button
           onClick={handleCatchToggle}
           className={`rounded-lg px-6 py-2 font-semibold transition-colors ${
             caught
@@ -67,7 +74,7 @@ const PokemonCardHeader: React.FC<TPokemonHeaderProps> = ({ pokemon }) => {
           }`}
         >
           {caught ? `Release ${name}` : `Catch ${name}`}
-        </button>
+        </button> */}
       </div>
     </div>
   );

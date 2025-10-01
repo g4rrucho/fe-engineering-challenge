@@ -4,12 +4,12 @@ import { useSearchParams } from 'react-router-dom';
 import usePokemons from '@/hooks/usePokemons';
 import PokemonListItem from '@/components/PokemonList/PokemonListItem';
 import PokemonListSkeleton from '@/components/PokemonList/PokemonListSkeleton';
-import PokemonListPaginationControls from '@/components/PokemonList/PokemonListPaginationControls';
+import PaginationControl from '@/components/PokemonList/PaginationControl';
 
 const PokemonList: React.FC = () => {
+  const limit = 20;
   const [searchParams, setSearchParams] = useSearchParams();
   const currentPage = parseInt(searchParams.get('page') || '1', 10);
-  const limit = 20;
 
   const handlePageChange = (newPage: number) => {
     setSearchParams({ page: newPage.toString() });
@@ -41,20 +41,24 @@ const PokemonList: React.FC = () => {
 
   return (
     <>
-      <div className="grid grid-cols-2 gap-4 p-4 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6">
-        {data.results.map((pokemon, index) => (
-          <PokemonListItem key={`${pokemon.name}-${index}`} {...pokemon} />
-        ))}
-      </div>
       <div className="flex flex-col items-center">
-        <PokemonListPaginationControls
+        <PaginationControl
           currentPage={currentPage}
           onPageChange={handlePageChange}
+          totalCount={data.count}
           totalPages={totalPages}
           hasNext={hasNext}
           hasPrevious={hasPrevious}
         />
       </div>
+
+      {data && (
+        <div className="grid grid-cols-2 gap-4 p-4 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6">
+          {data.results.map((pokemon, index) => (
+            <PokemonListItem key={`${pokemon.name}-${index}`} {...pokemon} />
+          ))}
+        </div>
+      )}
     </>
   );
 };

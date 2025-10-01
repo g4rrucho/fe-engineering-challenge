@@ -59,7 +59,10 @@ const PaginationControl: React.FC<TPaginationControl> = ({
   return (
     <div className="flex flex-col items-center space-y-4 py-4">
       {totalCount && (
-        <p className="text-muted-foreground text-sm">
+        <p
+          className="text-muted-foreground text-sm"
+          data-testid="results-counter"
+        >
           Showing {startItem.toLocaleString()}-{endItem.toLocaleString()} of{' '}
           {totalCount.toLocaleString()}
         </p>
@@ -74,18 +77,20 @@ const PaginationControl: React.FC<TPaginationControl> = ({
                   ? 'pointer-events-none opacity-50'
                   : 'cursor-pointer'
               }
+              data-testid="pagination-previous"
             />
           </PaginationItem>
 
           {getVisiblePages().map((page, index) => (
             <PaginationItem key={index}>
               {typeof page === 'string' ? (
-                <PaginationEllipsis />
+                <PaginationEllipsis data-testid="pagination-ellipsis" />
               ) : (
                 <PaginationLink
                   onClick={() => onPageChange(page)}
                   isActive={page === currentPage}
                   className="cursor-pointer"
+                  data-testid={`pagination-page-${page}`}
                 >
                   {page}
                 </PaginationLink>
@@ -99,6 +104,7 @@ const PaginationControl: React.FC<TPaginationControl> = ({
               className={
                 !hasNext ? 'pointer-events-none opacity-50' : 'cursor-pointer'
               }
+              data-testid="pagination-next"
             />
           </PaginationItem>
         </PaginationContent>

@@ -1,15 +1,13 @@
-// import React, { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
 import usePokemons from '@/hooks/usePokemons';
-import PaginationControl from '@/components/Pokemon/PokemonList/PaginationControl';
-import PokemonListCards from '@/components/Pokemon/PokemonList/PokemonListCards';
-import PokemonTable from '@/components/Pokemon/PokemonTable/PokemonTable';
+import PokemonListCards from '@/components/PokemonList/PokemonListCards';
+import PokemonListTable from '@/components/PokemonList/Table/PokemonListTable';
+import PaginationControl from '@/components/PokemonList/PaginationControl';
 
-const PokemonList: React.FC = () => {
+const PokemonListPage: React.FC = () => {
   const limit = 10;
   const [searchParams, setSearchParams] = useSearchParams();
-  // const [selectedPokemons, setSelectedPokemons] = useState<Array<number>>([]);
   const currentPage = parseInt(searchParams.get('page') || '1', 10);
 
   const handlePageChange = (newPage: number) => {
@@ -36,7 +34,7 @@ const PokemonList: React.FC = () => {
         />
       </div>
       <div className="hidden lg:block">
-        <PokemonTable
+        <PokemonListTable
           limit={limit}
           isError={isError}
           isLoading={isLoading}
@@ -57,4 +55,4 @@ const PokemonList: React.FC = () => {
   );
 };
 
-export default PokemonList;
+export default PokemonListPage;

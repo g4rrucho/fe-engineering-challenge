@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
-import PokemonListItem from '@/components/Pokemon/PokemonList/PokemonListItem';
+import PokemonCardListItem from '@/components/Pokemon/PokemonList/PokemonCardListItem';
 
 vi.mock('@/hooks/usePokemon', () => ({
   default: vi.fn(() => ({
@@ -36,7 +36,7 @@ describe('PokemonList', () => {
   it('renders PokemonListItem with correct data', () => {
     render(
       <TestWrapper>
-        <PokemonListItem
+        <PokemonCardListItem
           id={1}
           name="bulbasaur"
           url="https://pokeapi.co/api/v2/pokemon/1/"

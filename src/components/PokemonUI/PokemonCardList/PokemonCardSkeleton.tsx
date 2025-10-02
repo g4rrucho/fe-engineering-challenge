@@ -1,6 +1,6 @@
 import { Card, CardContent } from '@/components/ui/card';
 
-const PokemonListSkeleton: React.FC = () => (
+const PokemonCardSkeleton: React.FC = () => (
   <Card className="h-32 py-2">
     <CardContent className="flex flex-col items-center justify-center px-4">
       <div className="h-16 w-16 animate-pulse rounded bg-gray-300" />
@@ -12,4 +12,4 @@ const PokemonListSkeleton: React.FC = () => (
   </Card>
 );
 
-export default PokemonListSkeleton;
+export default PokemonCardSkeleton;

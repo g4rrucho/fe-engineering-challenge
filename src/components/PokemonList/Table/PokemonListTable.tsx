@@ -7,8 +7,8 @@ import {
   TableRow,
 } from '@/components/ui/table';
 import { TPokemonListItem } from '@/types/api';
-import PokemonTableRow from '@/components/Pokemon/PokemonTable/PokemonTableRow';
-import PokemonTableRowSkeleton from '@/components/Pokemon/PokemonTable/PokemonTableRowSkeleton';
+import PokemonTableRow from '@/components/PokemonList/Table/PokemonTableRow';
+import PokemonDataTableRowSkeleton from '@/components/PokemonUI/PokemonDataTable/PokemonDataTableRowSkeleton';
 
 type TPokemonListTableProps = {
   isLoading: boolean;
@@ -17,7 +17,7 @@ type TPokemonListTableProps = {
   pokemons: TPokemonListItem[];
 };
 
-const PokemonTable: React.FC<TPokemonListTableProps> = ({
+const PokemonListTable: React.FC<TPokemonListTableProps> = ({
   isError,
   isLoading,
   limit = 20,
@@ -41,7 +41,7 @@ const PokemonTable: React.FC<TPokemonListTableProps> = ({
         <TableBody>
           {isLoading
             ? Array.from({ length: limit }).map((_, index) => (
-                <PokemonTableRowSkeleton key={index} />
+                <PokemonDataTableRowSkeleton key={index} />
               ))
             : pokemons.map((pokemon) => (
                 <PokemonTableRow key={pokemon.name} pokemon={pokemon} />
@@ -52,4 +52,4 @@ const PokemonTable: React.FC<TPokemonListTableProps> = ({
   );
 };
 
-export default PokemonTable;
+export default PokemonListTable;

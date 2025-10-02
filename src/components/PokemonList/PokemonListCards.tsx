@@ -1,6 +1,6 @@
 import { TPokemonListItem } from '@/types/api';
-import { PokemonListSkeleton } from '@/components/PokemonDetailsCard';
-import PokemonListItem from '@/components/Pokemon/PokemonList/PokemonListItem';
+import PokemonCardSkeleton from '@/components/PokemonUI/PokemonCardList/PokemonCardSkeleton';
+import PokemonListItem from '@/components/PokemonList/PokemonListItem';
 
 type TPokemonListCardsProps = {
   isLoading: boolean;
@@ -20,7 +20,7 @@ const PokemonListCards: React.FC<TPokemonListCardsProps> = ({
       <>
         <div className="grid grid-cols-2 gap-4 p-4 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6">
           {Array.from({ length: limit }).map((_, index) => (
-            <PokemonListSkeleton key={index} />
+            <PokemonCardSkeleton key={index} />
           ))}
         </div>
       </>
@@ -35,7 +35,10 @@ const PokemonListCards: React.FC<TPokemonListCardsProps> = ({
       {pokemons && (
         <div className="grid grid-cols-2 gap-4 p-4 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6">
           {pokemons.map((pokemon, index) => (
-            <PokemonListItem key={`${pokemon.name}-${index}`} {...pokemon} />
+            <PokemonListItem
+              key={`${pokemon.name}-${index}`}
+              {...pokemon}
+            />
           ))}
         </div>
       )}

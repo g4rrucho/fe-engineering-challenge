@@ -23,7 +23,7 @@ const PokemonDetailsPage: React.FC = () => {
 
   const onRefetchPokemon = useCallback(() => void refetch(), [refetch]);
 
-  const pokemon = cachedPokemon || fetchedPokemon;
+  const pokemon = cachedPokemon?.pokemon || fetchedPokemon;
 
   return (
     <PokemonDetailsCard

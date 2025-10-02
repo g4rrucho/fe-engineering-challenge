@@ -1,10 +1,11 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 
-import PokemonCard from '@/components/PokemonDetailsCard';
 import PokemonList from '@/components/Pokemon/PokemonList';
 import Header from '@/components/Layout/Header';
 import Pokedex from '@/components/Pokedex';
+
+import PokemonDetailsPage from '@/pages/PokemonDetailsPage';
 
 const App: React.FC = () => {
   return (
@@ -12,7 +13,7 @@ const App: React.FC = () => {
       <Header />
       <Routes>
         <Route path="/" Component={PokemonList} />
-        <Route path="/pokemon/:id" Component={PokemonCard} />
+        <Route path="/pokemon/:id" Component={PokemonDetailsPage} />
         <Route path="/pokedex" Component={Pokedex} />
         <Route path="*" element={<div>404 Not Found</div>} />
       </Routes>

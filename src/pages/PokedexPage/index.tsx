@@ -14,6 +14,8 @@ const PokedexPage = () => {
   const [filters, setFilters] = useState<TFilterState>({
     search: '',
     type: 'all',
+    minHeight: '',
+    maxHeight: '',
     sortBy: 'timestamp',
     sortOrder: 'desc',
   });
@@ -30,7 +32,6 @@ const PokedexPage = () => {
     return Array.from(types).sort();
   }, [pokemonCaught, pokemonCaughtIDs]);
 
-  // Apply filtering and sorting
   const filteredAndSortedPokemon = useMemo(() => {
     const filtered = pokemonCaughtIDs.filter((id) => {
       const pokemonData = pokemonCaught[id];
@@ -38,7 +39,7 @@ const PokedexPage = () => {
 
       const pokemon = pokemonData.pokemon;
 
-      // Search filter (name or ID)
+      // Search
       if (filters.search) {
         const searchLower = filters.search.toLowerCase();
         const nameMatch = pokemon.name.toLowerCase().includes(searchLower);
@@ -46,7 +47,7 @@ const PokedexPage = () => {
         if (!nameMatch && !idMatch) return false;
       }
 
-      // Type filter
+      // Type
       if (filters.type !== 'all') {
         const hasType = pokemon.types.some(
           (type) => type.type.name === filters.type
@@ -54,10 +55,18 @@ const PokedexPage = () => {
         if (!hasType) return false;
       }
 
+      // Height filter
+      if (filters.minHeight || filters.maxHeight) {
+        const pokemonHeight = pokemon.height / 10; // Conversation to meters
+        if (filters.minHeight && pokemonHeight < parseFloat(filters.minHeight))
+          return false;
+        if (filters.maxHeight && pokemonHeight > parseFloat(filters.maxHeight))
+          return false;
+      }
+
       return true;
     });
 
-    // Apply sorting
     filtered.sort((aId, bId) => {
       const aData = pokemonCaught[aId];
       const bData = pokemonCaught[bId];

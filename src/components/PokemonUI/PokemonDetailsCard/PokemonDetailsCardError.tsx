@@ -9,6 +9,7 @@ const PokemonDetailsCardError: React.FC<TPokemonDetailsCardErrorProps> = ({
 }) => {
   return (
     <div>
+      // TODO design error state
       <p>TODO pokemon details card error</p>
       <Button onClick={onRetry}>Retry</Button>
     </div>

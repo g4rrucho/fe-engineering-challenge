@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { TPokemon } from '@/types/api';
 
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
@@ -6,20 +8,31 @@ import PokemonDetailsCardError from '@/components/PokemonUI/PokemonDetailsCard/P
 import PokemonDetailsCardHeader from '@/components/PokemonUI/PokemonDetailsCard/PokemonDetailsCardHeader';
 import PokemonPhysicalStats from '@/components/PokemonUI/PokemonDetailsCard/PokemonPhysicalStats';
 import PokemonBaseStats from '@/components/PokemonUI/PokemonDetailsCard/PokemonBaseStats';
+import PokemonNotes from '@/components/PokemonUI/PokemonDetailsCard/PokemonNotes';
+import { TPokemonCaughtData } from '@/types/pokedex';
 
 type TPokemonDetailsCardProps = {
   isLoading: boolean;
   isError: boolean;
-  pokemon: TPokemon | undefined;
+  pokemon?: TPokemon;
+  caughtData?: TPokemonCaughtData;
   onRefetchPokemon: () => void;
+  handleToggleCatch: () => void;
+  onUpdateNotes?: (notes: string) => void;
 };
 
 const PokemonDetailsCard: React.FC<TPokemonDetailsCardProps> = ({
   isLoading,
   isError,
   pokemon,
+  caughtData,
   onRefetchPokemon,
+  handleToggleCatch,
+  onUpdateNotes,
 }) => {
+  if (caughtData && !onUpdateNotes)
+    throw new Error('onUpdateNotes is required when caughtData is present');
+
   if (isLoading) return <PokemonDetailsCardSkeleton />;
   if (isError || !pokemon)
     return <PokemonDetailsCardError onRetry={onRefetchPokemon} />;
@@ -29,8 +42,19 @@ const PokemonDetailsCard: React.FC<TPokemonDetailsCardProps> = ({
   return (
     <Card className="m-4">
       <CardHeader>
-        <PokemonDetailsCardHeader pokemon={pokemon} />
+        <PokemonDetailsCardHeader
+          pokemon={pokemon}
+          isCaught={!!caughtData}
+          onToggleCatch={handleToggleCatch}
+        />
         <PokemonPhysicalStats pokemon={{ height, weight, base_experience }} />
+        {caughtData && onUpdateNotes && (
+          <PokemonNotes
+            pokemonName={pokemon.name}
+            notes={caughtData.notes || ''}
+            onUpdateNotes={onUpdateNotes}
+          />
+        )}
       </CardHeader>
       <CardContent>
         <PokemonBaseStats stats={stats} />

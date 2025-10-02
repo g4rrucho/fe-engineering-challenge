@@ -3,7 +3,11 @@ import { Link } from 'react-router-dom';
 import { TableCell, TableRow } from '@/components/ui/table';
 
 import usePokedex from '@/hooks/usePokedex';
-import { TPokemonDataTableRowProps } from '@/components/PokemonUI/PokemonDataTable/types';
+import { TPokemonDataRow } from '@/components/PokemonUI/PokemonDataTable/types';
+
+export type TPokemonDataTableRowProps = TPokemonDataRow & {
+  showCaughtDate?: boolean;
+};
 
 const PokemonDataTableRow: React.FC<TPokemonDataTableRowProps> = ({
   pokemon,

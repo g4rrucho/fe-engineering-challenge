@@ -27,7 +27,7 @@ export const PokedexProvider: React.FC<TPokedexProviderProps> = ({
   const catchPokemon = (pokemon: TPokemon): void => {
     setPokemonCaught((prev) => ({
       ...prev,
-      [pokemon.id]: { pokemon, caughtAt: new Date().toISOString() },
+      [pokemon.id]: { pokemon, caughtAt: new Date().toISOString(), notes: '' },
     }));
   };
 
@@ -51,6 +51,14 @@ export const PokedexProvider: React.FC<TPokedexProviderProps> = ({
     return pokemonCaught[id] || undefined;
   };
 
+  const updatePokemonNotes = (id: number, notes: string) => {
+    const updated = { ...pokemonCaught };
+    if (updated[id]) {
+      updated[id] = { ...updated[id], notes };
+      setPokemonCaught(updated);
+    }
+  };
+
   return (
     <PokedexContext.Provider
       value={{
@@ -60,6 +68,7 @@ export const PokedexProvider: React.FC<TPokedexProviderProps> = ({
         isCaught,
         getPokemonCaughtIDs,
         getPokemonCaught,
+        updatePokemonNotes,
       }}
     >
       {children}

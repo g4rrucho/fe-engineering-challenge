@@ -3,23 +3,20 @@ import React from 'react';
 import PokeBall from '@/assets/pokeball.png';
 
 import { TPokemon } from '@/types/api';
-import usePokedex from '@/hooks/usePokedex';
 import { Button } from '@/components/ui/button';
 
 type TPokemonHeaderProps = {
   pokemon: TPokemon;
+  onToggleCatch?: () => void;
+  isCaught?: boolean;
 };
 
-const PokemonDetailsCardHeader: React.FC<TPokemonHeaderProps> = ({ pokemon }) => {
-  const { isCaught, catchPokemon, releasePokemon } = usePokedex();
+const PokemonDetailsCardHeader: React.FC<TPokemonHeaderProps> = ({
+  pokemon,
+  onToggleCatch,
+  isCaught,
+}) => {
   const { id, name, sprites, types } = pokemon;
-
-  const caught = isCaught(id);
-
-  const handleCatchToggle = () => {
-    if (caught) releasePokemon(id);
-    else catchPokemon(pokemon);
-  };
 
   return (
     <div className="mb-8 flex flex-col items-center gap-2 sm:gap-8 md:flex-row md:gap-2">
@@ -38,7 +35,7 @@ const PokemonDetailsCardHeader: React.FC<TPokemonHeaderProps> = ({ pokemon }) =>
       <div className="text-center">
         <div className="full-w flex items-center justify-center gap-4">
           <h1 className="mb-2 text-4xl font-bold capitalize">{name}</h1>
-          {isCaught(id) && (
+          {isCaught && (
             <img className="h-8 w-8 object-contain" src={PokeBall} />
           )}
         </div>
@@ -61,10 +58,10 @@ const PokemonDetailsCardHeader: React.FC<TPokemonHeaderProps> = ({ pokemon }) =>
 
       <div className="mt-4 flex justify-center md:ml-auto">
         <Button
-          variant={caught ? 'destructive' : 'default'}
-          onClick={handleCatchToggle}
+          variant={isCaught ? 'destructive' : 'default'}
+          onClick={onToggleCatch}
         >
-          {caught ? `Release ${name}` : `Catch ${name}`}
+          {isCaught ? `Release ${name}` : `Catch ${name}`}
         </Button>
       </div>
     </div>

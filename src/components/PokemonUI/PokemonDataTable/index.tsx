@@ -6,8 +6,16 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
-import { TPokemonDataTableProps } from '@/components/PokemonUI/PokemonDataTable/types';
+
+import { TPokemonDataRow } from '@/components/PokemonUI/PokemonDataTable/types';
 import PokemonDataTableRow from '@/components/PokemonUI/PokemonDataTable/PokemonDataTableRow';
+
+type TPokemonDataTableProps = {
+  pokemons: TPokemonDataRow[];
+  isLoading?: boolean;
+  isError?: boolean;
+  showCaughtDate?: boolean;
+};
 
 const PokemonDataTable: React.FC<TPokemonDataTableProps> = ({
   pokemons,

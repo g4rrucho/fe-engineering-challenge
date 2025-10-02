@@ -17,6 +17,7 @@ type TPaginationControl = {
   hasNext: boolean;
   hasPrevious: boolean;
   limit?: number;
+  isVisible: boolean;
   onPageChange: (newPage: number) => void;
 };
 
@@ -26,6 +27,7 @@ const PaginationControl: React.FC<TPaginationControl> = ({
   totalPages,
   totalCount,
   hasNext,
+  isVisible,
   hasPrevious,
   limit = 20,
 }) => {
@@ -34,25 +36,34 @@ const PaginationControl: React.FC<TPaginationControl> = ({
 
   const getVisiblePages = () => {
     const pages = [];
-    const delta = 1;
 
-    if (currentPage > delta + 1) {
-      pages.push(1);
+    pages.push(1);
+
+    let middleStart = Math.max(2, currentPage - 1);
+    let middleEnd = Math.min(totalPages - 1, currentPage + 1);
+
+    if (middleEnd - middleStart < 2) {
+      if (middleStart === 2) {
+        middleEnd = Math.min(totalPages - 1, middleStart + 2);
+      } else {
+        middleStart = Math.max(2, middleEnd - 2);
+      }
     }
 
-    for (
-      let i = Math.max(1, currentPage - delta);
-      i <= Math.min(totalPages, currentPage + delta);
-      i++
-    )
-      pages.push(i);
+    for (let i = middleStart; i <= middleEnd; i++) {
+      if (!pages.includes(i)) {
+        pages.push(i);
+      }
+    }
 
-    if (currentPage < totalPages - delta) {
+    if (totalPages > 1 && !pages.includes(totalPages)) {
       pages.push(totalPages);
     }
 
     return pages;
   };
+
+  if (!isVisible) return null;
 
   return (
     <div className="flex flex-col items-center space-y-4 py-4">

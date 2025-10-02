@@ -26,7 +26,8 @@ const PokemonDetailsCard: React.FC = () => {
   const pokemon = cachedPokemon || fetchedPokemon;
 
   if (isLoading && !cachedPokemon) return <div>Loading...</div>;
-  if (error) return <div>Error loading Pokémon data.</div>;
+  if (error && !cachedPokemon)
+    return <div>Error loading Pokémon data. Check your connection.</div>;
   if (!pokemon) return <div>No data available</div>;
 
   const { height, weight, stats, base_experience } = pokemon;

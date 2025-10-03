@@ -13,6 +13,7 @@ export type TPokedexContext = {
   pokemonCaught: TPokemonCaught;
   catchPokemon: (pokemon: TPokemon) => void;
   releasePokemon: (id: number) => void;
+  releasePokemons: (ids: number[]) => void;
   isCaught: (id: number) => boolean;
   getPokemonCaughtIDs: () => number[];
   getPokemonCaught: (id: number) => TPokemonCaughtData | undefined;

@@ -4,15 +4,22 @@ import { TableCell, TableRow } from '@/components/ui/table';
 
 import usePokedex from '@/hooks/usePokedex';
 import { TPokemonDataRow } from '@/components/PokemonUI/PokemonDataTable/types';
+import { Checkbox } from '@/components/ui/checkbox';
 
 export type TPokemonDataTableRowProps = TPokemonDataRow & {
   showCaughtDate?: boolean;
+  isSelectionMode?: boolean;
+  isSelected?: boolean;
+  onToggleSelection?: (id: number) => void;
 };
 
 const PokemonDataTableRow: React.FC<TPokemonDataTableRowProps> = ({
   pokemon,
   caughtAt,
   showCaughtDate,
+  isSelectionMode = false,
+  isSelected = false,
+  onToggleSelection,
 }) => {
   const { isCaught } = usePokedex();
   const displayName = pokemon.name.replaceAll('-', ' ');
@@ -20,6 +27,14 @@ const PokemonDataTableRow: React.FC<TPokemonDataTableRowProps> = ({
 
   return (
     <TableRow key={pokemon.id} className="h-12 hover:bg-gray-50">
+      {isSelectionMode && (
+        <TableCell>
+          <Checkbox
+            checked={isSelected}
+            onClick={() => onToggleSelection?.(pokemon.id)}
+          />
+        </TableCell>
+      )}
       <TableCell className="font-medium">
         <Link
           to={`/pokemon/${pokemon.id}`}

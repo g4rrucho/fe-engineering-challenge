@@ -39,6 +39,15 @@ export const PokedexProvider: React.FC<TPokedexProviderProps> = ({
     });
   };
 
+  const releasePokemons = (ids: number[]): void => {
+    setPokemonCaught((prev) => {
+      const newPokemonCaught = { ...prev };
+
+      ids.forEach((id) => delete newPokemonCaught[id]);
+      return newPokemonCaught;
+    });
+  };
+
   const isCaught = (id: number): boolean => {
     return id in pokemonCaught;
   };
@@ -65,6 +74,7 @@ export const PokedexProvider: React.FC<TPokedexProviderProps> = ({
         pokemonCaught,
         catchPokemon,
         releasePokemon,
+        releasePokemons,
         isCaught,
         getPokemonCaughtIDs,
         getPokemonCaught,

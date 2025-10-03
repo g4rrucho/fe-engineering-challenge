@@ -1,15 +1,18 @@
 import React from 'react';
 
 import { TPokemon } from '@/types';
+import { TPokemonCaughtData } from '@/types';
+import useSharedPokemon from '@/hooks/useSharedPokemon';
 
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
+
 import PokemonDetailsCardSkeleton from '@/components/PokemonUI/PokemonDetailsCard/PokemonDetailsCardSkeleton';
 import PokemonDetailsCardError from '@/components/PokemonUI/PokemonDetailsCard/PokemonDetailsCardError';
 import PokemonDetailsCardHeader from '@/components/PokemonUI/PokemonDetailsCard/PokemonDetailsCardHeader';
 import PokemonPhysicalStats from '@/components/PokemonUI/PokemonDetailsCard/PokemonPhysicalStats';
 import PokemonBaseStats from '@/components/PokemonUI/PokemonDetailsCard/PokemonBaseStats';
 import PokemonNotes from '@/components/PokemonUI/PokemonDetailsCard/PokemonNotes';
-import { TPokemonCaughtData } from '@/types';
+import PokemonShareAlert from '@/components/PokemonUI/PokemonDetailsCard/PokemonSharedAlert';
 
 type TPokemonDetailsCardProps = {
   isLoading: boolean;
@@ -30,6 +33,8 @@ const PokemonDetailsCard: React.FC<TPokemonDetailsCardProps> = ({
   handleToggleCatch,
   onUpdateNotes,
 }) => {
+  const { isShared, sharedData } = useSharedPokemon();
+
   if (caughtData && !onUpdateNotes)
     throw new Error('onUpdateNotes is required when caughtData is present');
 
@@ -46,7 +51,9 @@ const PokemonDetailsCard: React.FC<TPokemonDetailsCardProps> = ({
           pokemon={pokemon}
           isCaught={!!caughtData}
           onToggleCatch={handleToggleCatch}
+          isShared={isShared}
         />
+        <PokemonShareAlert isShared={isShared} sharedData={sharedData} />
         <PokemonPhysicalStats pokemon={{ height, weight, base_experience }} />
         {caughtData && onUpdateNotes && (
           <PokemonNotes

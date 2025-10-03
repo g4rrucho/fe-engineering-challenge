@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 
 import usePokemon from '@/hooks/usePokemon';
 import usePokedex from '@/hooks/usePokedex';
+
 import PokemonDetailsCard from '@/components/PokemonUI/PokemonDetailsCard';
 
 const PokemonDetailsPage: React.FC = () => {

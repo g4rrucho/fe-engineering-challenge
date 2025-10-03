@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 
 import Header from '@/components/Layout/Header';
 import PokedexPage from '@/pages/PokedexPage';
@@ -14,7 +14,7 @@ const App: React.FC = () => {
         <Route path="/" Component={PokemonListPage} />
         <Route path="/pokedex" Component={PokedexPage} />
         <Route path="/pokemon/:id" Component={PokemonDetailsPage} />
-        <Route path="*" element={<div>404 Not Found</div>} />
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </>
   );

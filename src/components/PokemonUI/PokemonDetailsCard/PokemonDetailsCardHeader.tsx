@@ -4,17 +4,20 @@ import PokeBall from '@/assets/pokeball.png';
 
 import { TPokemon } from '@/types';
 import { Button } from '@/components/ui/button';
+import ShareButton from '@/components/ShareButton';
 
 type TPokemonHeaderProps = {
   pokemon: TPokemon;
   onToggleCatch?: () => void;
   isCaught?: boolean;
+  isShared: boolean;
 };
 
 const PokemonDetailsCardHeader: React.FC<TPokemonHeaderProps> = ({
   pokemon,
   onToggleCatch,
   isCaught,
+  isShared
 }) => {
   const { id, name, sprites, types } = pokemon;
 
@@ -56,13 +59,14 @@ const PokemonDetailsCardHeader: React.FC<TPokemonHeaderProps> = ({
         </div>
       </div>
 
-      <div className="mt-4 flex justify-center md:ml-auto">
+      <div className="mt-4 flex flex-col gap-2 md:ml-auto md:flex-row">
         <Button
           variant={isCaught ? 'destructive' : 'default'}
           onClick={onToggleCatch}
         >
           {isCaught ? `Release ${name}` : `Catch ${name}`}
         </Button>
+        {!isShared && <ShareButton pokemonId={id} />}
       </div>
     </div>
   );

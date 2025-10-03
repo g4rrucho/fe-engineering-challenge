@@ -47,6 +47,7 @@ describe('usePokemon', () => {
     });
 
     await waitFor(() => expect(result.current.isSuccess).toBe(true));
+    console.log(result);
 
     expect(result.current.data).toEqual(mockPokemon);
     expect(mockGetPokemon).toHaveBeenCalledWith(1);

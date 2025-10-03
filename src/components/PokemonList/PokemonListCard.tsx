@@ -10,6 +10,8 @@ const PokemonListCard: React.FC<TPokemonListItem> = ({ name, id }) => {
   const { data, isLoading, isError } = usePokemon(id || name);
 
   if (isLoading) return <PokemonCardSkeleton />;
+
+  // TODO handle error state by showing a placeholder card and retry button
   if (isError || !data)
     return (
       <div data-testid={`pokemon-error-${id || name}`}>

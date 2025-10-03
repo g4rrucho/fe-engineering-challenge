@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { Button } from '@/components/ui/button';
 import { Trash2, X } from 'lucide-react';
 
@@ -52,4 +52,4 @@ const BulkOperationsBar: React.FC<TBulkOperationsBarProps> = ({
   );
 };
 
-export default BulkOperationsBar;
+export default memo(BulkOperationsBar);

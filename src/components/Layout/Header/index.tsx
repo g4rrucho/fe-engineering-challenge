@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { useLocation } from 'react-router-dom';
 import { ChevronLeft, Home } from 'lucide-react';
 
@@ -44,4 +44,4 @@ const Header: React.FC = () => {
   );
 };
 
-export default Header;
+export default memo(Header);

@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 
-import { TPokemonCaught } from '@/types/pokedex';
+import { TPokemonCaught } from '@/types';
 import PokemonDataTable from '@/components/PokemonUI/PokemonDataTable';
 import PokemonCardList from '@/components/PokemonUI/PokemonCardList';
 

@@ -8,7 +8,7 @@ import useBulkSelection from '@/hooks/useBulkSelection';
 
 import { TFilterState } from '@/components/Pokedex/Filters';
 import PokedexHeader from '@/components/Pokedex/PokedexHeader';
-import PokedexFilters from '@/components/Pokedex/Filters';
+import Filters from '@/components/Pokedex/Filters';
 
 import PokedexEmptyState from '@/pages/PokedexPage/PokedexEmptyState';
 import PokedexNoResults from '@/pages/PokedexPage/PokedexNoResults';
@@ -63,7 +63,8 @@ const PokedexPage = () => {
       <PokedexHeader totalCaught={pokemonCaughtIDs.length} />
 
       {/* Filters */}
-      <PokedexFilters
+      <Filters
+        filters={filters}
         onFiltersChange={setFilters}
         availableTypes={availableTypes}
       />

@@ -1,4 +1,4 @@
-import { TPokemon } from '@/types/api';
+import { TPokemon } from '@/types';
 
 export type TPokemonDataRow = {
   pokemon: TPokemon;

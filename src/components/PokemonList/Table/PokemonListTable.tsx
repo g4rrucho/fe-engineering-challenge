@@ -6,7 +6,8 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
-import { TPokemonListItem } from '@/types/api';
+
+import { TPokemonListItem } from '@/types';
 import PokemonTableRow from '@/components/PokemonList/Table/PokemonTableRow';
 import PokemonDataTableRowSkeleton from '@/components/PokemonUI/PokemonDataTable/PokemonDataTableRowSkeleton';
 

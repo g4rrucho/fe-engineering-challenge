@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { PokedexContext, TPokedexContext } from '@/types/pokedex';
+import { PokedexContext, TPokedexContext } from '@/types';
 
 const usePokedex = (): TPokedexContext => {
   const context = useContext(PokedexContext);

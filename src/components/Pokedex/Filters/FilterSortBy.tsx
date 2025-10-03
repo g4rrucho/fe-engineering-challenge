@@ -9,12 +9,12 @@ import {
 } from '@/components/ui/select';
 import { TFilterState } from '@/components/Pokedex/Filters';
 
-type TPokedexFilterSortByProps = {
+type TFilterSortByProps = {
   sortBy: TFilterState['sortBy'];
   updateFilters: (newFilters: Partial<TFilterState>) => void;
 };
 
-const PokedexFilterSortBy: React.FC<TPokedexFilterSortByProps> = ({
+const FilterSortBy: React.FC<TFilterSortByProps> = ({
   sortBy,
   updateFilters,
 }) => (
@@ -36,4 +36,4 @@ const PokedexFilterSortBy: React.FC<TPokedexFilterSortByProps> = ({
   </Select>
 );
 
-export default PokedexFilterSortBy;
+export default FilterSortBy;

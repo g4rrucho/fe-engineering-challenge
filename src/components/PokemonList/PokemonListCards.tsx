@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { TPokemonListItem } from '@/types/api';
+import { TPokemonListItem } from '@/types';
 
 import PokemonCardSkeleton from '@/components/PokemonUI/PokemonCardList/PokemonCardSkeleton';
 import PokemonListItem from '@/components/PokemonList/PokemonListCard';

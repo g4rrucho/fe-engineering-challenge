@@ -1,4 +1,4 @@
-import { TPokemonCaughtData } from '@/types/pokedex';
+import { TPokemonCaughtData } from '@/types';
 import { formatDateString } from '@/utils/formatDateString';
 
 export const exportPokedexToCsv = (

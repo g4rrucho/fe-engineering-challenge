@@ -9,13 +9,13 @@ import {
 } from '@/components/ui/select';
 import { TFilterState } from '@/components/Pokedex/Filters';
 
-type TPokedexFilterTypeProps = {
+type TFilterTypeProps = {
   type: TFilterState['type'];
   updateFilters: (newFilters: Partial<TFilterState>) => void;
   availableTypes: string[];
 };
 
-const PokedexFilterType: React.FC<TPokedexFilterTypeProps> = ({
+const FilterType: React.FC<TFilterTypeProps> = ({
   type,
   updateFilters,
   availableTypes,
@@ -38,4 +38,4 @@ const PokedexFilterType: React.FC<TPokedexFilterTypeProps> = ({
   </Select>
 );
 
-export default PokedexFilterType;
+export default FilterType;

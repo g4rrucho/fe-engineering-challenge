@@ -1,6 +1,6 @@
 import { useQuery, UseQueryOptions } from '@tanstack/react-query';
 
-import { TPokemon } from '@/types/api';
+import { TPokemon } from '@/types';
 import { pokeApi } from '@/services/pokeApi';
 
 const usePokemon = (

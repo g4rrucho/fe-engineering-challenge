@@ -1,4 +1,4 @@
-import type { TPokemon } from '@/types/api';
+import type { TPokemon } from '@/types';
 
 type PokemonPhysicalStatsProps = {
   pokemon: Pick<TPokemon, 'height' | 'weight' | 'base_experience'>;

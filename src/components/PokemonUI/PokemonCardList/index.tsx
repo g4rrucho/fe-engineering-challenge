@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { TPokemonCaught } from '@/types/pokedex';
+import { TPokemonCaught } from '@/types';
 import PokemonCard from '@/components/PokemonUI/PokemonCardList/PokemonCard';
 
 type TPokedexCardListProps = {

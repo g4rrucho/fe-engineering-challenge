@@ -3,15 +3,12 @@ import React from 'react';
 import { Input } from '@/components/ui/input';
 import { TFilterState } from '@/components/Pokedex/Filters';
 
-type TPokedexFilterNameProps = {
+type TFilterNameProps = {
   search: TFilterState['search'];
   updateFilters: (newFilters: Partial<TFilterState>) => void;
 };
 
-const PokedexFilterName: React.FC<TPokedexFilterNameProps> = ({
-  search,
-  updateFilters,
-}) => (
+const FilterName: React.FC<TFilterNameProps> = ({ search, updateFilters }) => (
   <div className="min-w-48 flex-1">
     <Input
       placeholder="Search by name..."
@@ -22,4 +19,4 @@ const PokedexFilterName: React.FC<TPokedexFilterNameProps> = ({
   </div>
 );
 
-export default PokedexFilterName;
+export default FilterName;

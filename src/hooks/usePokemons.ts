@@ -1,6 +1,6 @@
 import { useQuery, UseQueryOptions } from '@tanstack/react-query';
 
-import type { TPokemonListItem, TPokemonPaginationResponse } from '@/types/api';
+import type { TPokemonListItem, TPokemonPaginationResponse } from '@/types';
 import { pokeApi } from '@/services/pokeApi';
 
 type UsePokemonsQueryResponseType =

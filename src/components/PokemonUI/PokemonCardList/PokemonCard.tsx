@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import type { TPokemon } from '@/types/api';
+import type { TPokemon } from '@/types';
 import { Card, CardContent } from '@/components/ui/card';
 import { twMerge } from 'tailwind-merge';
 import { formatDateString } from '@/utils/formatDateString';

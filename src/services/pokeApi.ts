@@ -3,7 +3,7 @@ import type {
   TPokemon,
   TPokemonListItem,
   TPokemonPaginationResponse,
-} from '@/types/api';
+} from '@/types';
 
 const BASE_URL = 'https://pokeapi.co/api/v2';
 

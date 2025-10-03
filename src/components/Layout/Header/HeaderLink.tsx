@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
-type HeaderLinkButtonProps = {
+type THeaderLinkButtonProps = {
   url: string;
   testId: string;
   label?: string;
@@ -9,7 +9,7 @@ type HeaderLinkButtonProps = {
   className?: string;
 };
 
-const HeaderLink: React.FC<HeaderLinkButtonProps> = ({
+const HeaderLink: React.FC<THeaderLinkButtonProps> = ({
   url,
   testId,
   label,

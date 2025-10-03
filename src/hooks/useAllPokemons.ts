@@ -1,5 +1,5 @@
 import { pokeApi } from '@/services/pokeApi';
-import { TPokemonListItem } from '@/types/api';
+import { TPokemonListItem } from '@/types';
 import { useQuery } from '@tanstack/react-query';
 
 const useAllPokemons = () =>

@@ -3,8 +3,8 @@ import {
   PokedexContext,
   TPokemonCaught,
   TPokemonCaughtData,
-} from '@/types/pokedex';
-import { TPokemon } from '@/types/api';
+} from '@/types';
+import { TPokemon } from '@/types';
 
 const STORAGE_KEY = 'pokemon_caught';
 

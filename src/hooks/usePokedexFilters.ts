@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 
-import { TPokemonCaught } from '@/types/pokedex';
+import { TPokemonCaught } from '@/types';
 import { TFilterState } from '@/components/Pokedex/Filters';
 
 type TUsePokedexFiltersParams = {

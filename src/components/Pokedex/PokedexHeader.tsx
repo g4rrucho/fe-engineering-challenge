@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 type TPokedexHeader = {
   totalCaught: number;
@@ -13,4 +13,4 @@ const PokedexHeader: React.FC<TPokedexHeader> = ({ totalCaught }) => {
   );
 };
 
-export default PokedexHeader;
+export default memo(PokedexHeader);

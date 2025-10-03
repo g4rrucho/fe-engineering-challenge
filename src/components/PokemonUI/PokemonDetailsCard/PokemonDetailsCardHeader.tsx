@@ -2,7 +2,7 @@ import React from 'react';
 
 import PokeBall from '@/assets/pokeball.png';
 
-import { TPokemon } from '@/types/api';
+import { TPokemon } from '@/types';
 import { Button } from '@/components/ui/button';
 
 type TPokemonHeaderProps = {

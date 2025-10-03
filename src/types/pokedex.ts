@@ -1,4 +1,4 @@
-import { TPokemon } from '@/types/api';
+import { TPokemon } from '@/types';
 import { createContext } from 'react';
 
 export type TPokemonCaughtData = {

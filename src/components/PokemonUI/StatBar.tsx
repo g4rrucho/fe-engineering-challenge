@@ -1,13 +1,13 @@
-import React from 'react';
+import React, { memo } from 'react';
 
-interface StatBarProps {
+type TStatBarProps = {
   name: string;
   value: number;
   color: string;
   maxValue?: number;
-}
+};
 
-const StatBar: React.FC<StatBarProps> = ({
+const StatBar: React.FC<TStatBarProps> = ({
   name,
   value,
   color,
@@ -29,4 +29,4 @@ const StatBar: React.FC<StatBarProps> = ({
   );
 };
 
-export default StatBar;
+export default memo(StatBar);

@@ -3,12 +3,12 @@ import React from 'react';
 import { Button } from '@/components/ui/button';
 import { TFilterState } from '@/components/Pokedex/Filters';
 
-type TPokedexFilterSortOrderProps = {
+type TFilterSortOrderProps = {
   sortOrder: TFilterState['sortOrder'];
   updateFilters: (newFilters: Partial<{ sortOrder: 'asc' | 'desc' }>) => void;
 };
 
-const PokedexFilterSortOrder: React.FC<TPokedexFilterSortOrderProps> = ({
+const FilterSortOrder: React.FC<TFilterSortOrderProps> = ({
   sortOrder,
   updateFilters,
 }) => (
@@ -26,4 +26,4 @@ const PokedexFilterSortOrder: React.FC<TPokedexFilterSortOrderProps> = ({
   </Button>
 );
 
-export default PokedexFilterSortOrder;
+export default FilterSortOrder;

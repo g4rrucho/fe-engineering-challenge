@@ -1,34 +1,30 @@
-import React, { useState } from 'react';
+import React, { useCallback } from 'react';
 
-import {
-  TFilterState,
-  TPokedexFiltersProps,
-} from '@/components/Pokedex/Filters';
-
+import { TFilterState } from '@/components/Pokedex/Filters';
 import FilterType from '@/components/Pokedex/Filters/FilterType';
 import FilterName from '@/components/Pokedex/Filters/FilterName';
 import FilterHeight from '@/components/Pokedex/Filters/FilterHeight';
 import FilterSortBy from '@/components/Pokedex/Filters/FilterSortBy';
 import FilterSortOrder from '@/components/Pokedex/Filters/FilterSortOrder';
 
-const PokedexFilters: React.FC<TPokedexFiltersProps> = ({
+type TPokedexFiltersProps = {
+  filters: TFilterState;
+  onFiltersChange: (filters: TFilterState) => void;
+  availableTypes: string[];
+};
+
+const Filters: React.FC<TPokedexFiltersProps> = ({
+  filters,
   onFiltersChange,
   availableTypes,
 }) => {
-  const [filters, setFilters] = useState<TFilterState>({
-    search: '',
-    type: 'all',
-    minHeight: '',
-    maxHeight: '',
-    sortBy: 'timestamp',
-    sortOrder: 'desc',
-  });
-
-  const updateFilters = (newFilters: Partial<TFilterState>) => {
-    const updated = { ...filters, ...newFilters };
-    setFilters(updated);
-    onFiltersChange(updated);
-  };
+  const updateFilters = useCallback(
+    (newFilters: Partial<TFilterState>) => {
+      const updated = { ...filters, ...newFilters };
+      onFiltersChange(updated);
+    },
+    [filters, onFiltersChange]
+  );
 
   return (
     <div className="mb-6 space-y-4">
@@ -60,4 +56,4 @@ const PokedexFilters: React.FC<TPokedexFiltersProps> = ({
   );
 };
 
-export default PokedexFilters;
+export default Filters;

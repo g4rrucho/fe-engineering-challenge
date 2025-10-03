@@ -3,7 +3,7 @@ import React from 'react';
 import { Input } from '@/components/ui/input';
 import { TFilterState } from '@/components/Pokedex/Filters';
 
-type TPokedexFilterHeightProps = {
+type TFilterHeightProps = {
   filters: {
     minHeight: TFilterState['minHeight'];
     maxHeight: TFilterState['maxHeight'];
@@ -13,7 +13,7 @@ type TPokedexFilterHeightProps = {
   ) => void;
 };
 
-const PokedexFilterHeight: React.FC<TPokedexFilterHeightProps> = ({
+const FilterHeight: React.FC<TFilterHeightProps> = ({
   filters,
   updateFilters,
 }) => (
@@ -37,4 +37,4 @@ const PokedexFilterHeight: React.FC<TPokedexFilterHeightProps> = ({
   </div>
 );
 
-export default PokedexFilterHeight;
+export default FilterHeight;

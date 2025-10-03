@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { TPokemon } from '@/types/api';
+import { TPokemon } from '@/types';
 
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import PokemonDetailsCardSkeleton from '@/components/PokemonUI/PokemonDetailsCard/PokemonDetailsCardSkeleton';
@@ -9,7 +9,7 @@ import PokemonDetailsCardHeader from '@/components/PokemonUI/PokemonDetailsCard/
 import PokemonPhysicalStats from '@/components/PokemonUI/PokemonDetailsCard/PokemonPhysicalStats';
 import PokemonBaseStats from '@/components/PokemonUI/PokemonDetailsCard/PokemonBaseStats';
 import PokemonNotes from '@/components/PokemonUI/PokemonDetailsCard/PokemonNotes';
-import { TPokemonCaughtData } from '@/types/pokedex';
+import { TPokemonCaughtData } from '@/types';
 
 type TPokemonDetailsCardProps = {
   isLoading: boolean;

@@ -11,7 +11,7 @@ vi.mock('@/services/pokeApi', () => ({
 }));
 
 import { pokeApi } from '@/services/pokeApi';
-import { TPokemon } from '@/types/api';
+import { TPokemon } from '@/types';
 const mockGetPokemon = vi.mocked(pokeApi.getPokemon);
 
 const createWrapper = () => {

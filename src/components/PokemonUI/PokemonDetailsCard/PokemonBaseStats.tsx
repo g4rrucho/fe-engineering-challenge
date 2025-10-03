@@ -1,9 +1,9 @@
 import React from 'react';
 
-import type { TPokemonStat } from '@/types/api';
-import StatBar from '@/components/StatBar';
+import type { TPokemonStat } from '@/types';
+import StatBar from '@/components/PokemonUI/StatBar';
 
-const statConfig = [
+const STAT_CONFIG = [
   { name: 'HP', statName: 'hp', color: 'bg-red-500' },
   { name: 'Attack', statName: 'attack', color: 'bg-orange-500' },
   { name: 'Defense', statName: 'defense', color: 'bg-yellow-500' },
@@ -33,7 +33,7 @@ const PokemonBaseStats: React.FC<PokemonBaseStatsProps> = ({ stats }) => {
     <div className="border-t pt-2">
       <h2 className="pb-4 text-2xl font-bold">Base Stats</h2>
       <div className="grid gap-3">
-        {statConfig.map(({ name, statName, color }) => (
+        {STAT_CONFIG.map(({ name, statName, color }) => (
           <StatBar
             key={statName}
             name={name}

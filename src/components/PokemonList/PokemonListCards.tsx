@@ -1,6 +1,9 @@
+import React from 'react';
+
 import { TPokemonListItem } from '@/types/api';
+
 import PokemonCardSkeleton from '@/components/PokemonUI/PokemonCardList/PokemonCardSkeleton';
-import PokemonListItem from '@/components/PokemonList/PokemonListItem';
+import PokemonListItem from '@/components/PokemonList/PokemonListCard';
 
 type TPokemonListCardsProps = {
   isLoading: boolean;
@@ -17,13 +20,11 @@ const PokemonListCards: React.FC<TPokemonListCardsProps> = ({
 }) => {
   if (isLoading) {
     return (
-      <>
-        <div className="grid grid-cols-2 gap-4 p-4 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6">
-          {Array.from({ length: limit }).map((_, index) => (
-            <PokemonCardSkeleton key={index} />
-          ))}
-        </div>
-      </>
+      <div className="grid grid-cols-2 gap-4 p-4 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6">
+        {Array.from({ length: limit }).map((_, index) => (
+          <PokemonCardSkeleton key={index} />
+        ))}
+      </div>
     );
   }
 
@@ -31,18 +32,11 @@ const PokemonListCards: React.FC<TPokemonListCardsProps> = ({
   if (!pokemons) return <div>No Pokémon found</div>;
 
   return (
-    <>
-      {pokemons && (
-        <div className="grid grid-cols-2 gap-4 p-4 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6">
-          {pokemons.map((pokemon, index) => (
-            <PokemonListItem
-              key={`${pokemon.name}-${index}`}
-              {...pokemon}
-            />
-          ))}
-        </div>
-      )}
-    </>
+    <div className="grid grid-cols-2 gap-4 p-4 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6">
+      {pokemons.map((pokemon) => (
+        <PokemonListItem key={pokemon.id} {...pokemon} />
+      ))}
+    </div>
   );
 };
 

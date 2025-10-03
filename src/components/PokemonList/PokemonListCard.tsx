@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { memo } from 'react';
 
 import type { TPokemonListItem } from '@/types/api';
 import usePokemon from '@/hooks/usePokemon';
@@ -6,19 +6,18 @@ import usePokemon from '@/hooks/usePokemon';
 import PokemonCard from '@/components/PokemonUI/PokemonCardList/PokemonCard';
 import PokemonCardSkeleton from '@/components/PokemonUI/PokemonCardList/PokemonCardSkeleton';
 
-const PokemonCardListItem: React.FC<TPokemonListItem> = ({ name, id }) => {
+const PokemonListCard: React.FC<TPokemonListItem> = ({ name, id }) => {
   const { data, isLoading, isError } = usePokemon(id || name);
-  const memoizedPokemon = useMemo(() => data, [data]);
 
   if (isLoading) return <PokemonCardSkeleton />;
-  if (isError || !memoizedPokemon)
+  if (isError || !data)
     return (
       <div data-testid={`pokemon-error-${id || name}`}>
         Error loading Pokémon data
       </div>
     );
 
-  return <PokemonCard pokemon={memoizedPokemon} />;
+  return <PokemonCard pokemon={data} />;
 };
 
-export default PokemonCardListItem;
+export default memo(PokemonListCard);

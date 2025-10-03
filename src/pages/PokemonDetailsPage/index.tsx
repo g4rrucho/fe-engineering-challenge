@@ -24,7 +24,7 @@ const PokemonDetailsPage: React.FC = () => {
     isError,
     refetch,
   } = usePokemon(pokemonID, {
-    enabled: !cachedPokemon || !pokemonID,
+    enabled: !cachedPokemon && !!pokemonID,
   });
 
   const pokemon = cachedPokemon?.pokemon || fetchedPokemon;

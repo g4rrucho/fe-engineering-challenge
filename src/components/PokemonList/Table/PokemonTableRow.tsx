@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 import { TPokemonListItem } from '@/types/api';
 import usePokemon from '@/hooks/usePokemon';
@@ -34,4 +34,4 @@ const PokemonTableRow: React.FC<{ pokemon: TPokemonListItem }> = ({
   );
 };
 
-export default PokemonTableRow;
+export default memo(PokemonTableRow);

@@ -1,6 +1,7 @@
-import { TFilterState } from '@/components/Pokedex/Filters/types';
-import { Button } from '@/components/ui/button';
 import React from 'react';
+
+import { Button } from '@/components/ui/button';
+import { TFilterState } from '@/components/Pokedex/Filters';
 
 type TPokedexFilterSortOrderProps = {
   sortOrder: TFilterState['sortOrder'];

@@ -3,13 +3,13 @@ import React, { useState } from 'react';
 import {
   TFilterState,
   TPokedexFiltersProps,
-} from '@/components/Pokedex/Filters/types';
+} from '@/components/Pokedex/Filters';
 
-import PokedexFilterType from '@/components/Pokedex/Filters/PokedexFilterType';
-import PokedexFilterName from '@/components/Pokedex/Filters/PokedexFilterName';
-import PokedexFilterHeight from '@/components/Pokedex/Filters/PokedexFilterHeight';
-import PokedexFilterSortBy from '@/components/Pokedex/Filters/PokedexFilterSortBy';
-import PokedexFilterSortOrder from '@/components/Pokedex/Filters/PokedexFilterSortOrder';
+import FilterType from '@/components/Pokedex/Filters/FilterType';
+import FilterName from '@/components/Pokedex/Filters/FilterName';
+import FilterHeight from '@/components/Pokedex/Filters/FilterHeight';
+import FilterSortBy from '@/components/Pokedex/Filters/FilterSortBy';
+import FilterSortOrder from '@/components/Pokedex/Filters/FilterSortOrder';
 
 const PokedexFilters: React.FC<TPokedexFiltersProps> = ({
   onFiltersChange,
@@ -33,18 +33,15 @@ const PokedexFilters: React.FC<TPokedexFiltersProps> = ({
   return (
     <div className="mb-6 space-y-4">
       <div className="flex flex-wrap gap-4">
-        <PokedexFilterName
-          search={filters.search}
-          updateFilters={updateFilters}
-        />
+        <FilterName search={filters.search} updateFilters={updateFilters} />
 
-        <PokedexFilterType
+        <FilterType
           availableTypes={availableTypes}
           type={filters.type}
           updateFilters={updateFilters}
         />
 
-        <PokedexFilterHeight
+        <FilterHeight
           filters={{
             maxHeight: filters.maxHeight,
             minHeight: filters.minHeight,
@@ -52,12 +49,9 @@ const PokedexFilters: React.FC<TPokedexFiltersProps> = ({
           updateFilters={updateFilters}
         />
 
-        <PokedexFilterSortBy
-          sortBy={filters.sortBy}
-          updateFilters={updateFilters}
-        />
+        <FilterSortBy sortBy={filters.sortBy} updateFilters={updateFilters} />
 
-        <PokedexFilterSortOrder
+        <FilterSortOrder
           sortOrder={filters.sortOrder}
           updateFilters={updateFilters}
         />

@@ -1,19 +1,20 @@
 import { useCallback, useState } from 'react';
 
+import { exportPokedexToCsv } from '@/utils/exportToCsv';
+
 import usePokedex from '@/hooks/usePokedex';
 import usePokedexFilters from '@/hooks/usePokedexFilters';
 import useBulkSelection from '@/hooks/useBulkSelection';
 
+import { TFilterState } from '@/components/Pokedex/Filters';
 import PokedexHeader from '@/components/Pokedex/PokedexHeader';
-import PokedexFilters from '@/components/Pokedex/Filters/PokedexFilters';
-import { TFilterState } from '@/components/Pokedex/Filters/types';
+import PokedexFilters from '@/components/Pokedex/Filters';
 
 import PokedexEmptyState from '@/pages/PokedexPage/PokedexEmptyState';
 import PokedexNoResults from '@/pages/PokedexPage/PokedexNoResults';
 import PokedexResultsInfo from '@/pages/PokedexPage/PokemonResultsInfo';
 import PokedexSelectionControl from '@/pages/PokedexPage/PokedexSelectionControl';
 import PokedexPokemonList from '@/pages/PokedexPage/PokedexPokemonList';
-import { exportPokedexToCsv } from '@/utils/exportToCsv';
 
 const DEFAULT_FILTERS: TFilterState = {
   search: '',

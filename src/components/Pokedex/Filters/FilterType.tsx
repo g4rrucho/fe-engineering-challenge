@@ -1,4 +1,5 @@
-import { TFilterState } from '@/components/Pokedex/Filters/types';
+import React from 'react';
+
 import {
   Select,
   SelectContent,
@@ -6,7 +7,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import React from 'react';
+import { TFilterState } from '@/components/Pokedex/Filters';
 
 type TPokedexFilterTypeProps = {
   type: TFilterState['type'];

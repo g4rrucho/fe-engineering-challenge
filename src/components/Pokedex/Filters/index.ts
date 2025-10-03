@@ -1,2 +1,2 @@
-export { default } from './PokedexFilters';
+export { default } from './Filters';
 export * from './types';

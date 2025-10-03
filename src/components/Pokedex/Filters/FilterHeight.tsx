@@ -1,6 +1,7 @@
-import { TFilterState } from '@/components/Pokedex/Filters/types';
-import { Input } from '@/components/ui/input';
 import React from 'react';
+
+import { Input } from '@/components/ui/input';
+import { TFilterState } from '@/components/Pokedex/Filters';
 
 type TPokedexFilterHeightProps = {
   filters: {

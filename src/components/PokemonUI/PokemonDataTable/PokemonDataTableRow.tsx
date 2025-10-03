@@ -5,12 +5,13 @@ import { TableCell, TableRow } from '@/components/ui/table';
 import usePokedex from '@/hooks/usePokedex';
 import { TPokemonDataRow } from '@/components/PokemonUI/PokemonDataTable/types';
 import { Checkbox } from '@/components/ui/checkbox';
+import { formatDateString } from '@/utils/formatDateString';
 
-export type TPokemonDataTableRowProps = TPokemonDataRow & {
-  showCaughtDate?: boolean;
+type TPokemonDataTableRowProps = TPokemonDataRow & {
   isSelectionMode?: boolean;
   isSelected?: boolean;
   onToggleSelection?: (id: number) => void;
+  showCaughtDate: boolean;
 };
 
 const PokemonDataTableRow: React.FC<TPokemonDataTableRowProps> = ({
@@ -72,22 +73,20 @@ const PokemonDataTableRow: React.FC<TPokemonDataTableRowProps> = ({
           ))}
         </div>
       </TableCell>
-      <TableCell className="text-right">
-        {(pokemon.height / 10).toFixed(1)}m
-      </TableCell>
-      <TableCell className="text-right">
-        {(pokemon.weight / 10).toFixed(1)}kg
-      </TableCell>
-      <TableCell className="text-center">
-        {caught ? (
-          <span className="font-medium text-green-600">✓ Caught</span>
-        ) : (
-          <span className="text-gray-400">—</span>
-        )}
-      </TableCell>
-      {showCaughtDate && (
+      <TableCell>{(pokemon.height / 10).toFixed(1)}m</TableCell>
+      <TableCell>{(pokemon.weight / 10).toFixed(1)}kg</TableCell>
+      {!showCaughtDate && (
+        <TableCell className="text-center">
+          {caught ? (
+            <span className="font-medium text-green-600">✓ Caught</span>
+          ) : (
+            <span className="text-gray-400">—</span>
+          )}
+        </TableCell>
+      )}
+      {showCaughtDate && caughtAt && (
         <TableCell className="text-center text-xs text-gray-500">
-          {caughtAt ? new Date(caughtAt).toLocaleDateString() : '—'}
+          {formatDateString(caughtAt)}
         </TableCell>
       )}
     </TableRow>

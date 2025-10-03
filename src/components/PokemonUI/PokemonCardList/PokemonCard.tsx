@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import type { TPokemon } from '@/types/api';
 import { Card, CardContent } from '@/components/ui/card';
 import { twMerge } from 'tailwind-merge';
+import { formatDateString } from '@/utils/formatDateString';
 
 type TPokemonCardProps = {
   pokemon: TPokemon;
@@ -21,6 +22,7 @@ const PokemonCard: React.FC<TPokemonCardProps> = ({
   onToggleSelection,
 }) => {
   const displayName = pokemon.name.replaceAll('-', ' ');
+  const formattedCaughtAt = formatDateString(caughtAt || '');
 
   const content = (
     <Card
@@ -61,9 +63,7 @@ const PokemonCard: React.FC<TPokemonCardProps> = ({
             ID: {pokemon.id.toString().padStart(4, '0')}
           </p>
           {caughtAt && (
-            <p className="text-xs text-gray-400">
-              Caught: {new Date(caughtAt).toLocaleDateString()}
-            </p>
+            <p className="text-xs text-gray-400">Caught: {formattedCaughtAt}</p>
           )}
         </div>
       </CardContent>

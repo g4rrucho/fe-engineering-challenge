@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 
 import usePokedex from '@/hooks/usePokedex';
 import usePokedexFilters from '@/hooks/usePokedexFilters';
@@ -13,6 +13,7 @@ import PokedexNoResults from '@/pages/PokedexPage/PokedexNoResults';
 import PokedexResultsInfo from '@/pages/PokedexPage/PokemonResultsInfo';
 import PokedexSelectionControl from '@/pages/PokedexPage/PokedexSelectionControl';
 import PokedexPokemonList from '@/pages/PokedexPage/PokedexPokemonList';
+import { exportPokedexToCsv } from '@/utils/exportToCsv';
 
 const DEFAULT_FILTERS: TFilterState = {
   search: '',
@@ -48,6 +49,12 @@ const PokedexPage = () => {
     onBulkDelete: releasePokemons,
   });
 
+  const handleExport = useCallback(() => {
+    const dataToExport = filteredPokemons.map((id) => pokemonCaught[id]);
+    const timestamp = new Date().toISOString().split('T')[0];
+    exportPokedexToCsv(dataToExport, `pokedex-export-${timestamp}.csv`);
+  }, [filteredPokemons, pokemonCaught]);
+
   if (pokemonCaughtIDs.length === 0) return <PokedexEmptyState />;
 
   return (
@@ -75,6 +82,7 @@ const PokedexPage = () => {
       <PokedexResultsInfo
         filteredCount={filteredPokemons.length}
         totalCount={pokemonCaughtIDs.length}
+        onExport={handleExport}
       />
 
       {/* No results */}

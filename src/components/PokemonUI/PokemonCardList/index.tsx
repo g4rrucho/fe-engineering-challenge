@@ -22,15 +22,12 @@ const PokemonCardList: React.FC<TPokedexCardListProps> = ({
     {pokemonIDs.map((id) => {
       const pokemonData = pokemons[id];
       const pokemon = pokemonData.pokemon;
-      const pokemonCaughtAt = new Date(
-        pokemonData.caughtAt
-      ).toLocaleDateString();
 
       return (
         <PokemonCard
           key={`pokemon-${id}`}
           pokemon={pokemon}
-          caughtAt={pokemonCaughtAt}
+          caughtAt={pokemonData.caughtAt}
           isSelectionMode={isSelectionMode}
           isSelected={selectedIDs?.has(pokemon.id)}
           onToggleSelection={onToggleSelection}

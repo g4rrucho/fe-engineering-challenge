@@ -92,7 +92,9 @@ const PokemonDataTable: React.FC<TPokemonDataTableProps> = ({
             <TableHead className="w-40">Type(s)</TableHead>
             <TableHead className="w-20 text-right">Height</TableHead>
             <TableHead className="w-20 text-right">Weight</TableHead>
-            <TableHead className="w-24 text-center">Status</TableHead>
+            {!showCaughtDate && (
+              <TableHead className="w-24 text-center">Status</TableHead>
+            )}
             {showCaughtDate && (
               <TableHead className="w-32 text-center">Caught</TableHead>
             )}
@@ -104,6 +106,7 @@ const PokemonDataTable: React.FC<TPokemonDataTableProps> = ({
               key={pokemon.id}
               pokemon={pokemon}
               caughtAt={caughtAt}
+              showCaughtDate={showCaughtDate}
               isSelectionMode={isSelectionMode}
               isSelected={selectedIDs?.has(pokemon.id)}
               onToggleSelection={onToggleSelection}

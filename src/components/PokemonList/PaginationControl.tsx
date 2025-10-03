@@ -10,7 +10,7 @@ import {
   PaginationPrevious,
 } from '@/components/ui/pagination';
 
-type TPaginationControl = {
+type TPaginationControlProps = {
   currentPage: number;
   totalPages: number;
   totalCount: number;
@@ -21,7 +21,7 @@ type TPaginationControl = {
   onPageChange: (newPage: number) => void;
 };
 
-const PaginationControl: React.FC<TPaginationControl> = ({
+const PaginationControl: React.FC<TPaginationControlProps> = ({
   currentPage,
   onPageChange,
   totalPages,

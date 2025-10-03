@@ -1,7 +1,7 @@
 import React from 'react';
 
 import type { TPokemonStat } from '@/types';
-import StatBar from '@/components/PokemonUI/StatBar';
+import StatBar from '@/components/PokemonUI/PokemonDetailsCard/StatBar';
 
 const STAT_CONFIG = [
   { name: 'HP', statName: 'hp', color: 'bg-red-500' },
@@ -24,11 +24,11 @@ const getStatByName = (stats: TPokemonStat[], statName: string) => {
   return stats.find((stat) => stat.stat.name === statName)?.base_stat || 0;
 };
 
-interface PokemonBaseStatsProps {
+type TPokemonBaseStatsProps = {
   stats: TPokemonStat[];
-}
+};
 
-const PokemonBaseStats: React.FC<PokemonBaseStatsProps> = ({ stats }) => {
+const PokemonBaseStats: React.FC<TPokemonBaseStatsProps> = ({ stats }) => {
   return (
     <div className="border-t pt-2">
       <h2 className="pb-4 text-2xl font-bold">Base Stats</h2>

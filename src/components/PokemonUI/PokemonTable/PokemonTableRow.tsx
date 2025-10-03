@@ -3,18 +3,18 @@ import { Link } from 'react-router-dom';
 import { TableCell, TableRow } from '@/components/ui/table';
 
 import usePokedex from '@/hooks/usePokedex';
-import { TPokemonDataRow } from '@/components/PokemonUI/PokemonDataTable/types';
+import { TPokemonDataRow } from '@/components/PokemonUI/PokemonTable/types';
 import { Checkbox } from '@/components/ui/checkbox';
 import { formatDateString } from '@/utils/formatDateString';
 
-type TPokemonDataTableRowProps = TPokemonDataRow & {
+type TPokemonTableRowProps = TPokemonDataRow & {
   isSelectionMode?: boolean;
   isSelected?: boolean;
   onToggleSelection?: (id: number) => void;
   showCaughtDate: boolean;
 };
 
-const PokemonDataTableRow: React.FC<TPokemonDataTableRowProps> = ({
+const PokemonTableRow: React.FC<TPokemonTableRowProps> = ({
   pokemon,
   caughtAt,
   showCaughtDate,
@@ -93,4 +93,4 @@ const PokemonDataTableRow: React.FC<TPokemonDataTableRowProps> = ({
   );
 };
 
-export default PokemonDataTableRow;
+export default PokemonTableRow;

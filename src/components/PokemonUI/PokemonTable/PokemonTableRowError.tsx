@@ -2,12 +2,12 @@ import React from 'react';
 import { Button } from '@/components/ui/button';
 import { TableCell, TableRow } from '@/components/ui/table';
 
-type TPokemonDataTableRowErrorProps = {
+type TPokemonTableRowErrorProps = {
   onRetry: () => void;
   message?: string;
 };
 
-const PokemonDataTableRowError: React.FC<TPokemonDataTableRowErrorProps> = ({
+const PokemonTableRowError: React.FC<TPokemonTableRowErrorProps> = ({
   onRetry,
   message = 'Error fetching data',
 }) => (
@@ -19,4 +19,4 @@ const PokemonDataTableRowError: React.FC<TPokemonDataTableRowErrorProps> = ({
   </TableRow>
 );
 
-export default PokemonDataTableRowError;
+export default PokemonTableRowError;

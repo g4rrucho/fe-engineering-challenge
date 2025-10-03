@@ -2,7 +2,7 @@ import React from 'react';
 
 import { TableCell, TableRow } from '@/components/ui/table';
 
-const PokemonDataTableRowSkeleton: React.FC = () => (
+const PokemonTableRowSkeleton: React.FC = () => (
   <TableRow className="h-12">
     <TableCell>
       <div className="h-4 w-12 animate-pulse rounded bg-gray-300" />
@@ -28,4 +28,4 @@ const PokemonDataTableRowSkeleton: React.FC = () => (
   </TableRow>
 );
 
-export default PokemonDataTableRowSkeleton;
+export default PokemonTableRowSkeleton;

@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 
 import { TPokemonCaught } from '@/types';
-import PokemonDataTable from '@/components/PokemonUI/PokemonDataTable';
+import PokedexTable from '@/components/PokemonUI/PokedexTable';
 import PokemonCardList from '@/components/PokemonUI/PokemonCardList';
 
 type PokedexPokemonListProps = {
@@ -47,7 +47,7 @@ const PokedexPokemonList = ({
 
       {/* Table view for desktop */}
       <div className="hidden lg:block">
-        <PokemonDataTable
+        <PokedexTable
           pokemons={mappedPokemons}
           showCaughtDate={true}
           isSelectionMode={isSelectionMode}

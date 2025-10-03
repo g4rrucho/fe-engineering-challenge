@@ -2,7 +2,7 @@ import { useSearchParams } from 'react-router-dom';
 
 import usePokemons from '@/hooks/usePokemons';
 import PokemonListCards from '@/components/PokemonList/PokemonListCards';
-import PokemonListTable from '@/components/PokemonList/Table/PokemonListTable';
+import PokemonListTable from '@/components/PokemonList/PokemonListTable';
 import PaginationControl from '@/components/PokemonList/PaginationControl';
 
 const PokemonListPage: React.FC = () => {

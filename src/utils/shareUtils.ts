@@ -25,7 +25,8 @@ export const generateShareUrl = (
   pokemonId: number,
   data?: TSharedPokemonData
 ): string => {
-  const baseUrl = `${window.location.origin}/pokemon/${pokemonId}?isShared=true`;
+  const basePath = import.meta.env.BASE_URL || '/';
+  const baseUrl = `${window.location.origin}${basePath}pokemon/${pokemonId}?isShared=true`;
 
   if (!data) return baseUrl;
 

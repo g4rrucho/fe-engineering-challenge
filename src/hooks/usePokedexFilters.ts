@@ -37,7 +37,6 @@ const usePokedexFilters = ({
 
       const pokemon = pokemonData.pokemon;
 
-      // Search
       if (filters.search) {
         const searchLower = filters.search.toLowerCase();
         const nameMatch = pokemon.name.toLowerCase().includes(searchLower);
@@ -45,7 +44,6 @@ const usePokedexFilters = ({
         if (!nameMatch && !idMatch) return false;
       }
 
-      // Type
       if (filters.type !== 'all') {
         const hasType = pokemon.types.some(
           (type) => type.type.name === filters.type
@@ -53,7 +51,6 @@ const usePokedexFilters = ({
         if (!hasType) return false;
       }
 
-      // Height filter
       if (filters.minHeight || filters.maxHeight) {
         const pokemonHeight = pokemon.height / 10;
         if (filters.minHeight && pokemonHeight < parseFloat(filters.minHeight))

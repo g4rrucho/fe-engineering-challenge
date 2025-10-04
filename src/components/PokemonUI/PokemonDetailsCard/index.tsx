@@ -12,7 +12,7 @@ import PokemonDetailsCardHeader from '@/components/PokemonUI/PokemonDetailsCard/
 import PokemonPhysicalStats from '@/components/PokemonUI/PokemonDetailsCard/PokemonPhysicalStats';
 import PokemonBaseStats from '@/components/PokemonUI/PokemonDetailsCard/PokemonBaseStats';
 import PokemonNotes from '@/components/PokemonUI/PokemonDetailsCard/PokemonNotes';
-import PokemonShareAlert from '@/components/PokemonUI/PokemonDetailsCard/PokemonSharedAlert';
+import PokemonShareAlert from '@/components/PokemonUI/PokemonDetailsCard/PokemonShareAlert';
 
 type TPokemonDetailsCardProps = {
   isLoading: boolean;

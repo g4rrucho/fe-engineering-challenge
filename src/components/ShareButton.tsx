@@ -41,7 +41,12 @@ const ShareButton: React.FC<TShareButtonProps> = ({
   if (!isVisible) return null;
 
   return (
-    <Button variant="outline" onClick={handleShare} className="gap-2">
+    <Button
+      variant="outline"
+      onClick={handleShare}
+      className="gap-2"
+      data-testid="share-button"
+    >
       {copied ? (
         <>
           <Check className="h-4 w-4" />

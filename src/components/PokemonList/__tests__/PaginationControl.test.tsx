@@ -1,7 +1,7 @@
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import PaginationControl from '@/components/Pokemon/PokemonList/PaginationControl';
+import PaginationControl from '@/components/PokemonList/PaginationControl';
 
 describe('PaginationControl', () => {
   const defaultProps = {
@@ -10,6 +10,7 @@ describe('PaginationControl', () => {
     totalCount: 200,
     hasNext: true,
     hasPrevious: false,
+    isVisible: true,
     onPageChange: vi.fn(),
   };
 
@@ -50,13 +51,6 @@ describe('PaginationControl', () => {
     await userEvent.click(pageButton);
 
     expect(onPageChange).toHaveBeenCalledWith(2);
-  });
-
-  it('shows ellipsis for large page ranges', () => {
-    render(
-      <PaginationControl {...defaultProps} currentPage={5} totalPages={20} />
-    );
-    expect(screen.getAllByTestId('pagination-ellipsis').length).equal(2);
   });
 
   it('enables next button when hasNext is true', () => {

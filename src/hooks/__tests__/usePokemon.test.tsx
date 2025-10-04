@@ -47,14 +47,13 @@ describe('usePokemon', () => {
     });
 
     await waitFor(() => expect(result.current.isSuccess).toBe(true));
-    console.log(result);
 
     expect(result.current.data).toEqual(mockPokemon);
     expect(mockGetPokemon).toHaveBeenCalledWith(1);
   });
 
   it('handles loading state', () => {
-    mockGetPokemon.mockImplementation(() => new Promise(() => {})); // Never resolves
+    mockGetPokemon.mockImplementation(() => new Promise(() => {}));
 
     const { result } = renderHook(() => usePokemon(1), {
       wrapper: createWrapper(),

@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
-import PokemonCardListItem from '@/components/Pokemon/PokemonList/PokemonCardListItem';
+import PokemonListCard from '@/components/PokemonList/PokemonListCard';
 
 vi.mock('@/hooks/usePokemon', () => ({
   default: vi.fn(() => ({
@@ -33,10 +33,10 @@ const TestWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 };
 
 describe('PokemonList', () => {
-  it('renders PokemonListItem with correct data', () => {
+  it('renders PokemonListCard with correct data', () => {
     render(
       <TestWrapper>
-        <PokemonCardListItem
+        <PokemonListCard
           id={1}
           name="bulbasaur"
           url="https://pokeapi.co/api/v2/pokemon/1/"
@@ -44,9 +44,10 @@ describe('PokemonList', () => {
       </TestWrapper>
     );
 
-    expect(screen.getByText('bulbasaur')).toBeInTheDocument();
-    expect(screen.getByText('ID: 0001')).toBeInTheDocument();
-    expect(screen.getByAltText('bulbasaur')).toHaveAttribute(
+    expect(screen.getByTestId('pokemon-item-1')).toBeInTheDocument();
+    expect(screen.getByTestId('pokemon-name-1')).toHaveTextContent('bulbasaur');
+    expect(screen.getByTestId('pokemon-id-1')).toHaveTextContent('ID: 0001');
+    expect(screen.getByTestId('pokemon-image-1')).toHaveAttribute(
       'src',
       'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png'
     );

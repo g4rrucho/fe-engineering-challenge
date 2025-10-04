@@ -29,3 +29,6 @@ dist-ssr
 .yarn/build-state.yml
 .yarn/cache
 .pnp.*
+
+# Env
+.env

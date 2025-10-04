@@ -1,5 +1,5 @@
 import React from 'react';
-import { Check, Share2 } from 'lucide-react';
+import { Share2 } from 'lucide-react';
 
 import { formatDateString } from '@/utils/formatDateString';
 import { TSharedPokemonData } from '@/utils/shareUtils';
@@ -32,11 +32,8 @@ const PokemonShareAlert: React.FC<TPokemonShareAlertProps> = ({
           className="mt-4 w-full rounded-lg border border-green-200 bg-green-50 p-4"
           data-testid="shared-caught-info"
         >
-          <p className="flex w-full text-sm font-medium text-green-800">
-            <Check />
-            <span>
-              This Pokémon was caught by the original owner
-            </span>
+          <p className="flex w-full flex-col text-sm font-medium text-green-800">
+            <span>This Pokémon was caught by the original owner</span>
             {sharedData.caughtAt &&
               ` on ${formatDateString(sharedData.caughtAt)}`}
           </p>

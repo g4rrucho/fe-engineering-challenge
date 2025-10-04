@@ -16,7 +16,7 @@ createRoot(document.getElementById('root')!).render(
         <PokedexProvider>
           <App />
         </PokedexProvider>
-        <ReactQueryDevtools />
+        {import.meta.env.VITE_ENV === 'development' && <ReactQueryDevtools />}
       </QueryClientProvider>
     </BrowserRouter>
   </StrictMode>

@@ -59,7 +59,7 @@ const PokemonDetailsCardHeader: React.FC<TPokemonHeaderProps> = ({
         </div>
       </div>
 
-      <div className="mt-4 flex flex-col gap-2 md:ml-auto md:flex-row">
+      <div className="mt-4 flex flex-col gap-2 md:ml-auto lg:flex-row">
         <Button
           variant={isCaught ? 'destructive' : 'default'}
           onClick={onToggleCatch}

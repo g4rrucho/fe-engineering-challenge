@@ -47,15 +47,17 @@ const PokemonDetailsPage: React.FC = () => {
   );
 
   return (
-    <PokemonDetailsCard
-      isError={isError}
-      isLoading={isLoading}
-      pokemon={pokemon}
-      caughtData={cachedPokemon}
-      onRefetchPokemon={onRefetchPokemon}
-      handleToggleCatch={handleToggleCatch}
-      onUpdateNotes={handleUpdateNotes}
-    />
+    <div className='md:mx-16 lg:mx-32 xl:mx-48 2xl:mx-64'>
+      <PokemonDetailsCard
+        isError={isError}
+        isLoading={isLoading}
+        pokemon={pokemon}
+        caughtData={cachedPokemon}
+        onRefetchPokemon={onRefetchPokemon}
+        handleToggleCatch={handleToggleCatch}
+        onUpdateNotes={handleUpdateNotes}
+      />
+    </div>
   );
 };
 

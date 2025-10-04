@@ -11,7 +11,7 @@ import { PokedexProvider } from '@/contexts/PokedexContext.tsx';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename="/fe-engineering-challenge/">
       <QueryClientProvider client={queryClient}>
         <PokedexProvider>
           <App />
